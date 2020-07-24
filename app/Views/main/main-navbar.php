@@ -30,7 +30,9 @@
                         <li><a href="#">Drop Down 5</a></li>
                     </ul>
                 </li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/contact">Hubungi Kami</a></li>
+                <li><a data-toggle="modal" href='#modal-login'>Login</a></li>
+                <!-- <li><a href='/login'>Login</a></li> -->
             </ul>
         </nav><!-- .nav-menu -->
 

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Admin extends Migration
+class User extends Migration
 {
 	public function up()
 	{
@@ -25,6 +25,24 @@ class Admin extends Migration
 				'constraint'    => '255',
 				'null'          => FALSE,
 			],
+			'name' => [
+				'type'			=> 'TEXT',
+				'null'			=> TRUE,
+			],
+			'phone' => [
+				'type'			=> 'VARCHAR',
+				'constraint'    => '15',
+				'null'			=> TRUE,
+			],
+			'whatsapp' => [
+				'type'			=> 'VARCHAR',
+				'constraint'    => '15',
+				'null'			=> TRUE,
+			],
+			'description' => [
+				'type'			=> 'TEXT',
+				'null'			=> TRUE,
+			],
 			'status' => [
 				'type'			=> 'INT',
 				'constraint'	=> 1,
@@ -43,11 +61,11 @@ class Admin extends Migration
 			],
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('tb_admin');
+		$this->forge->createTable('tb_user');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('tb_admin');
+		$this->forge->dropTable('tb_user');
 	}
 }

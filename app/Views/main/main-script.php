@@ -15,3 +15,18 @@
 
 <!-- ORIGINAL SCRIPT  -->
 <?= $this->renderSection('js') ?>
+
+<!-- Login Script Go Here -->
+<script>
+    $('#button-login-submit').click(function(e) {
+        e.preventDefault();
+        $('#form-login').trigger('submit');
+    });
+
+    $('#form-login').submit(function(e) {
+        e.preventDefault();
+        $('#button-login-submit').attr('disabled', true);
+        $('#fa-login-submit').attr('hidden', false);
+        $('#fa-login-logo').attr('hidden', true);
+    });
+</script>

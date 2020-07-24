@@ -19,9 +19,14 @@
         </h1>
         <form action="/Login/SignIn" method="POST">
             <?= csrf_field() ?>
-            <input type="text" value="" placeholder="Username" id="username" />
-            <input type="password" value="" placeholder="Password" id="password" />
+            <input type="text" value="" name="username" placeholder="Username" id="username" />
+            <input type="password" name="password" value="" placeholder="Password" id="password" />
             <button type="submit"><i class="fa fa-sign-in"></i> Masuk</button>
+            <?php if ($validation != null) : ?>
+                <div class="alert alert-danger my-2">
+                    <?= $validation->listErrors() ?>
+                </div>
+            <?php endif; ?>
         </form>
     </div>
 </body>
