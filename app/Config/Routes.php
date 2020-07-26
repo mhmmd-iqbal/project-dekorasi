@@ -33,6 +33,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 $routes->get('/', 'Home::index');
+$routes->get('/logout', 'Login::signOut');
+$routes->get('/wps', 'Admin/Login::index');
+$routes->group('admin', ['filter' => 'admin_auth'], function ($routes) {
+	$routes->add('', 'Admin\Dashboard::index');
+	$routes->add('dashboard', 'Admin\Dashboard::index');
+});
+$routes->group('user', ['filter' => 'user_auth'], function ($routes) {
+	$routes->add('', 'User\Dashboard::index');
+	$routes->add('dashboard', 'User\Dashboard::index');
+});
+// $routes->add('admin/dashboard', 'Admin/Dashboard::index', ['filter' => 'admin_auth']);
 
 /**
  * --------------------------------------------------------------------

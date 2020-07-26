@@ -36,12 +36,12 @@
                     <?= csrf_field() ?>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Username..." class="form-control" autofocus>
+                            <input type="text" placeholder="Username..." name="username" class="form-control" id="login-username" autocomplete="off">
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <input type="password" placeholder="Password..." class="form-control">
+                            <input type="password" placeholder="Password..." name="password" class="form-control" id="login-password" autocomplete="off">
                         </div>
                     </div>
                 </form>

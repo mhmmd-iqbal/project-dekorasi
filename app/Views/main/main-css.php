@@ -18,6 +18,10 @@
 <!-- Template Main CSS File -->
 <link href="<?= base_url() ?>/assets/template/main/css/style.css" rel="stylesheet">
 
+<!-- Another CSS For Plugin -->
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/toaster/jquery.toast.min.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/confirm-button/jquery-confirm.min.css">
+
 <!-- Template Change Original One  -->
 <link href="<?= base_url() ?>/assets/template/main/mycss.css" rel="stylesheet">
 <!-- =======================================================

@@ -8,7 +8,7 @@ class Contact extends BaseController
     {
         $data     = [
             'tittle'     => 'IDA | Kontak Kami',
-            'active'    => 'home'
+            'active'    => 'contact'
         ];
         return view('main/contact', $data);
     }

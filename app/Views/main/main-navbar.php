@@ -3,17 +3,17 @@
     <div class="container">
 
         <div class="logo float-left">
-            <h1 class="text-light"><a href="index.html"><span>IDA</span></a></h1>
+            <h1 class="text-light"><a href="/"><span>JasaDekor</span></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html"><img src="<?= base_url() ?>/assets/template/main/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
         <nav class="nav-menu float-right d-none d-lg-block">
             <ul>
-                <li class="<?= $active == 'home' ? 'active' : '' ?> "><a href="/home">Home</a></li>
+                <li class="<?= $active == 'home' ? 'active' : '' ?> "><a href="/">Home</a></li>
                 <li class="<?= $active == 'jasa' ? 'active' : '' ?> "><a href="/jasa">Jasa Dekorasi</a></li>
-                <li><a href="/contact">Hubungi Kami</a></li>
-                <li class="drop-down"><a href="">Drop Down</a>
+                <li class="<?= $active == 'contact' ? 'active' : '' ?> "><a href="/contact">Hubungi Kami</a></li>
+                <!-- <li class="drop-down"><a href="">Drop Down</a>
                     <ul>
                         <li><a href="#">Drop Down 1</a></li>
                         <li class="drop-down"><a href="#">Drop Down 2</a>
@@ -30,7 +30,7 @@
                         <li><a href="#">Drop Down 5</a></li>
                     </ul>
                 </li>
-                <li><a href="/contact">Hubungi Kami</a></li>
+                <li><a href="/contact">Hubungi Kami</a></li> -->
                 <li><a data-toggle="modal" href='#modal-login'>Login</a></li>
                 <!-- <li><a href='/login'>Login</a></li> -->
             </ul>
