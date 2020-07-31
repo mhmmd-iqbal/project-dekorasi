@@ -66,6 +66,10 @@
 <!-- Login Script Go Here -->
 <script>
     const baseUrl = '<?= base_url() ?>'
+    $('#open-modal-login').click(function(e) {
+        e.preventDefault();
+        $('#modal-login').modal('toggle');
+    });
     $('#button-login-submit').click(function(e) {
         e.preventDefault();
         $('#form-login').trigger('submit');

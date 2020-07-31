@@ -8,7 +8,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
         public function run()
         {
                 $data = [
-                        'username'      => 'user',
+                        'username'      => 'jd-01',
                         'pass'          => password_hash("user", PASSWORD_BCRYPT),
                         'name'          => 'Muhammad Iqbal',
                         'phone'         => '0802191727',

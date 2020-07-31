@@ -21,7 +21,7 @@
         ?>
     </section>
 
-
+    <?= $this->renderSection('modal') ?>
     <?= $this->include('admin/admin-js') ?>
 
 </body>

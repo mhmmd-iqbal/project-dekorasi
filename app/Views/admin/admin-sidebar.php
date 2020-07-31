@@ -4,7 +4,7 @@
          <!-- sidebar menu start-->
          <ul class="sidebar-menu" id="nav-accordion">
              <li>
-                 <a class="active" href="">
+                 <a class="<?= $active == 'dashboard' ? 'active' : '' ?>" href="/admin">
                      <i class="fa fa-dashboard"></i>
                      <span>Dashboard</span>
                  </a>
@@ -13,14 +13,14 @@
 
 
              <li class="sub-menu">
-                 <a href="javascript:;">
+                 <a href="javascript:;" class="<?= $active == 'masterdata' ? 'active' : '' ?>">
                      <i class="fa fa-cogs"></i>
                      <span>Master Data</span>
                  </a>
                  <ul class="sub">
-                     <li><a href="">Data Admin</a></li>
-                     <li><a href="">Data User</a></li>
-                     <li><a href="">Data Paket Sewa</a></li>
+                     <li class="master" id="admin"><a href="/admin/md-admin">Data Admin</a></li>
+                     <li class="master" id="user"><a href="">Data User</a></li>
+                     <li class="master" id="paket"><a href="">Data Paket Sewa</a></li>
                  </ul>
              </li>
 

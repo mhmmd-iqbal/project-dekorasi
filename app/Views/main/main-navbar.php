@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li><a href="/contact">Hubungi Kami</a></li> -->
-                <li><a data-toggle="modal" href='#modal-login'>Login</a></li>
+                <li><a href="#" id="open-modal-login">Login</a></li>
                 <!-- <li><a href='/login'>Login</a></li> -->
             </ul>
         </nav><!-- .nav-menu -->

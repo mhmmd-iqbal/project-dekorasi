@@ -36,12 +36,16 @@ $routes->get('/', 'Home::index');
 $routes->get('/logout', 'Login::signOut');
 $routes->get('/wps', 'Admin/Login::index');
 $routes->group('admin', ['filter' => 'admin_auth'], function ($routes) {
-	$routes->add('', 'Admin\Dashboard::index');
-	$routes->add('dashboard', 'Admin\Dashboard::index');
+	$routes->add('', 'Admin\ControllerAdmin::index');
+	$routes->add('md-admin', 'Admin\ControllerAdmin::dataAdmin');
+	$routes->add('md-user', 'Admin\ControllerAdmin::dataUser');
+	$routes->add('md-package', 'Admin\ControllerAdmin::dataPaket');
 });
 $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
-	$routes->add('', 'User\Dashboard::index');
-	$routes->add('dashboard', 'User\Dashboard::index');
+	$routes->add('', 'User\ControllerUser::index');
+	$routes->add('faq', 'User\ControllerUser::faq');
+	$routes->add('review', 'User\ControllerUser::review');
+	$routes->add('account', 'User\ControllerUser::account');
 });
 // $routes->add('admin/dashboard', 'Admin/Dashboard::index', ['filter' => 'admin_auth']);
 

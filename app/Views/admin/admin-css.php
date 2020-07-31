@@ -7,6 +7,9 @@
 
 <title><?= $judul ?></title>
 
+<!-- Bootstrap core from main template, because original is too old one -->
+<!-- <link href="<?= base_url() ?>/assets/template/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
 <!-- Bootstrap core CSS -->
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap-reset.css" rel="stylesheet">
@@ -100,4 +103,6 @@ padding: 0.7rem;
         cursor: pointer;
     }
 </style>
+<!-- my css -->
+<link rel="stylesheet" href="<?= base_url() ?>/assets/admin/admin.css">
 <?= $this->renderSection('css') ?>

@@ -4,27 +4,34 @@
          <!-- sidebar menu start-->
          <ul class="sidebar-menu" id="nav-accordion">
              <li>
-                 <a class="active" href="">
+                 <a class="<?= $active == 'dashboard' ? 'active' : ''  ?>" href="/user">
                      <i class="fa fa-dashboard"></i>
                      <span>Dashboard</span>
                  </a>
              </li>
 
-             <!-- <li>
-                 <a class="" href="index.html">
-                     <i class="fa fa-th"></i>
-                     <span>Profile Jasa Saya</span>
-                 </a>
-             </li> -->
-
              <li>
-                 <a class="" href="index.html">
-                     <i class="fa fa-comments-o"></i>
-                     <span>FAQs</span>
+                 <a href="index.html">
+                     <i class="fa fa-user"></i>
+                     <span>Profile</span>
                  </a>
              </li>
              <li>
-                 <a class="" href="index.html">
+                 <a href="index.html">
+                     <i class="fa fa-th"></i>
+                     <span>Paket Jasa</span>
+                 </a>
+             </li>
+
+
+             <li>
+                 <a class="<?= $active == 'faq' ? 'active' : ''  ?>" href="/user/faq">
+                     <i class="fa fa-credit-card"></i>
+                     <span>Invoice</span>
+                 </a>
+             </li>
+             <li>
+                 <a class="<?= $active == 'review' ? 'active' : ''  ?>" href="/user/review">
                      <i class="fa fa-star"></i>
                      <span>Review</span>
                  </a>
@@ -42,8 +49,8 @@
                  </ul>
              </li> -->
              <li>
-                 <a href="">
-                     <i class="fa fa-user"></i>
+                 <a class="<?= $active == 'account' ? 'active' : ''  ?>" href="/user/account">
+                     <i class="fa fa-cogs"></i>
                      <span>My Account</span>
                  </a>
              </li>
