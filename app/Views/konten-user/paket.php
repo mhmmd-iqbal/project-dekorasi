@@ -49,7 +49,7 @@
                 <h4 class="modal-title">Tambah Paket</h4>
             </div>
             <div class="modal-body">
-                <form action="/user/aksipaket/tambah" method="POST" id="form-action" enctype="multipart/form-data">
+                <form action="/user/AksiPaket/tambah" method="POST" id="form-action" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-lg-12 form-group">
@@ -139,7 +139,7 @@
             order: [],
 
             ajax: {
-                url: "/user/aksipaket/get",
+                url: "/user/AksiPaket/get",
                 type: "POST",
             },
 
@@ -153,7 +153,7 @@
         event.preventDefault();
         let id = $(this).val()
         $('#modal-detail').modal('toggle')
-        $.getJSON("/user/aksipaket/detail/" + id,
+        $.getJSON("/user/AksiPaket/detail/" + id,
             function(data, textStatus, jqXHR) {
                 data.gambar !== null ? $('#gambar').html('<img src="' + baseUrl + '/assets/paket/' + data.gambar + '" alt="Gambar Paket">') : $('#gambar').html("")
                 $('#paket').html(data.nama + ' - Harga: Rp.' + data.harga)

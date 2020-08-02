@@ -78,7 +78,7 @@ class AksiProfile extends BaseController
 
             $file = $this->request->getFile('logo');
             $newName = $file->getRandomName();
-            $file->move('assets/logo', $newName);
+            $file->move($this->base_file . '/logo', $newName);
 
             $data = [
                 'name' => $this->request->getVar('name', FILTER_SANITIZE_STRING),
@@ -106,7 +106,6 @@ class AksiProfile extends BaseController
             $res = [
                 'text'  => 'Data Telah Diperbarui',
                 'status' => TRUE,
-                'username' => $username,
             ];
         }
         return $this->respondCreated($res);

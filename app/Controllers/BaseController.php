@@ -43,5 +43,6 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 		session();
+		$this->base_file = base_url() == 'http://localhost:8080' ? 'assets' : 'public/assets';
 	}
 }

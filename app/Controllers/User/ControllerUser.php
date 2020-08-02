@@ -59,7 +59,8 @@ class ControllerUser extends BaseController
 
         return view('konten-user/account', $data);
     }
-    function paket(){
+    function paket()
+    {
         $data = [
             'judul' => 'USER | Daftar Paket',
             'username'  => $this->session->username,

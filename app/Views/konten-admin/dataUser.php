@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-heading">
-                <h4> Master Data Admin</h4>
+                <h4> Master Data User</h4>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -38,7 +38,6 @@
         </div>
     </div>
     <div class="col-md-12">
-
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="table-responsive">
@@ -47,6 +46,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Username</th>
+                                <th>Nama Pemilik</th>
+                                <th>No. Telepon</th>
+                                <th>Nama Jasa</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -65,30 +67,46 @@
 <?= $this->section('modal') ?>
 
 <div class="modal fade" id="modal-form">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Data Admin</h4>
+                <h4 class="modal-title">Tambah Data User</h4>
             </div>
             <div class="modal-body">
-                <form action="/admin/AksiAdmin/addAdmin" method="POST" id="submit-form">
+                <form action="/admin/AksiUser/addUser" method="POST" id="submit-form">
                     <?= csrf_field() ?>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username..." name="username" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password..." name="pass" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <strong>Status</strong>
-                        <br><br>
-                        <input type="radio" name="status" checked data-value="1" value="1">
-                        <div class="badge badge-blue">
-                            Aktif
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="">Username</label>
+                            <input type="text" class="form-control" placeholder="Username..." name="username" autocomplete="off">
                         </div>
-                        <input type="radio" name="status" data-value="0" value="0">
-                        <div class="badge badge-red">
-                            Tidak Aktif
+                        <div class="col-md-6 form-group">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" placeholder="Password..." name="pass" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label for="">Nama Pemilik</label>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+                        <div class="col-md-5 form-group">
+                            <label for="">No. Telepon</label>
+                            <input type="number" name="phone" id="" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <strong>Status</strong>
+                            <br><br>
+                            <input type="radio" name="status" checked data-value="1" value="1">
+                            <div class="badge badge-blue">
+                                Aktif
+                            </div>
+                            <input type="radio" name="status" data-value="0" value="0">
+                            <div class="badge badge-red">
+                                Tidak Aktif
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -109,7 +127,7 @@
 <?= $this->section('js') ?>
 <script>
     $(".master").removeClass("active");
-    $("#admin").addClass("active");
+    $("#user").addClass("active");
 
     showData()
 
@@ -124,7 +142,7 @@
             order: [],
 
             ajax: {
-                url: "/admin/AksiAdmin/get",
+                url: "/admin/AksiUser/get",
                 type: "POST",
             },
 

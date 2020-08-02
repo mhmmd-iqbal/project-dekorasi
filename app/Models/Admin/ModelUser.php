@@ -1,36 +1,29 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
-class ModelAdmin extends Model
+class ModelUser extends Model
 {
-    protected $table      = 'tb_admin';
+    protected $table      = 'tb_user';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
         'username',
+        'name',
         'pass',
+        'phone',
         'status',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function checkUser($username)
-    {
-        $builder = $this->table('tb_admin');
-        $builder->select(['username', 'pass', 'status']);
-        $builder->where('username', $username);
-        $builder->where('status', TRUE);
-        return $builder;
-    }
-
     private function _get_query()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'username', null);
+        $column_order = array(null, 'username', 'phone');
         $column_search = array('username');
         $order = array('created_at' => 'desc');
         $db->from($this->table);

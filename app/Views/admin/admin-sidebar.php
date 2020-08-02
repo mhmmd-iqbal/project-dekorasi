@@ -19,18 +19,23 @@
                  </a>
                  <ul class="sub">
                      <li class="master" id="admin"><a href="/admin/md-admin">Data Admin</a></li>
-                     <li class="master" id="user"><a href="">Data User</a></li>
-                     <li class="master" id="paket"><a href="">Data Paket Sewa</a></li>
+                     <li class="master" id="user"><a href="/admin/md-user">Data User</a></li>
                  </ul>
              </li>
 
              <li>
                  <a class="" href="index.html">
                      <i class="fa fa-th"></i>
-                     <span>List Jasa Dekorasi</span>
+                     <span>Data Produk User</span>
                  </a>
              </li>
 
+             <li>
+                 <a class="" href="index.html">
+                     <i class="fa fa-shopping-cart"></i>
+                     <span>Data Transaksi</span>
+                 </a>
+             </li>
              <li>
                  <a class="" href="index.html">
                      <i class="fa fa-comments-o"></i>
@@ -43,9 +48,9 @@
                      <span>Report</span>
                  </a>
                  <ul class="sub">
-                     <li><a href="">Data Paket Sewa</a></li>
                      <li><a href="">Data User</a></li>
-                     <li><a href="">Data Penyewaan Iklan</a></li>
+                     <li><a href="">Data Transaksi</a></li>
+                     <li><a href="">Data Pembeli</a></li>
                      <li><a href="">Invoice</a></li>
                  </ul>
              </li>

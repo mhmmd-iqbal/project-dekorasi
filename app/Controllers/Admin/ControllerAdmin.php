@@ -3,7 +3,6 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
-use App\Filters\AdminLogin;
 
 class ControllerAdmin extends BaseController
 {
@@ -40,7 +39,7 @@ class ControllerAdmin extends BaseController
             'username'  => $this->session->username,
             'active'    => 'masterdata'
         ];
-        return view('konten-admin/dataAdmin', $data);
+        return view('konten-admin/dataUser', $data);
     }
 
     function dataPaket()
@@ -51,5 +50,10 @@ class ControllerAdmin extends BaseController
             'active'    => 'masterdata'
         ];
         return view('konten-admin/dataAdmin', $data);
+    }
+
+    function detail($username)
+    {
+        return "Detail $username Belum Dibuat";
     }
 }

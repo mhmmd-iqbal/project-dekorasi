@@ -87,7 +87,7 @@ class AksiPaket extends BaseController
 
             $file = $this->request->getFile('gambar');
             $newName = $file->getRandomName();
-            $file->move('assets/paket', $newName);
+            $file->move($this->base_file . '/paket', $newName);
 
             $data = [
                 'username' => $this->session->username,
@@ -107,7 +107,7 @@ class AksiPaket extends BaseController
                 'status' => TRUE,
             ];
         }
-        return $this->respondCreated($data);
+        return $this->respondCreated($res);
     }
 
     function detail($id)

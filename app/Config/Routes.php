@@ -39,7 +39,7 @@ $routes->group('admin', ['filter' => 'admin_auth'], function ($routes) {
 	$routes->add('', 'Admin\ControllerAdmin::index');
 	$routes->add('md-admin', 'Admin\ControllerAdmin::dataAdmin');
 	$routes->add('md-user', 'Admin\ControllerAdmin::dataUser');
-	$routes->add('md-package', 'Admin\ControllerAdmin::dataPaket');
+	$routes->add('detail/(:segment)', 'Admin\ControllerAdmin::detail/$1');
 });
 $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->add('', 'User\ControllerUser::index');

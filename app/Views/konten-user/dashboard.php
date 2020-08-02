@@ -2,7 +2,7 @@
 <?= $this->section('konten') ?>
 <div class="row state-overview">
     <div class="col-lg-12">
-        <h4 style="font-weight: bold; text-align:right; font-style:italic"><img src="" alt="" id="logo" style="max-width: 20px;"> <span id="nama-usaha"></span></h4>
+        <h4 style="font-weight: bold; text-align:right; font-style:italic"><img src="" alt="" id="logo" style="max-height: 22px;"> <span id="nama-usaha"></span></h4>
     </div>
     <div class="col-lg-12">
         <div class="alert alert-info text-center">
@@ -111,14 +111,14 @@
 
 <?= $this->section('js') ?>
 <script>
-    $.getJSON("/user/aksiprofile/getDataUser",
+    $.getJSON("/user/AksiProfile/getDataUser",
         function(data, textStatus, jqXHR) {
             $('#nama-usaha').html(data.name_usaha)
             $('#logo').prop('src', baseUrl + '/assets/logo/' + data.logo)
         }
     )
 
-    $.getJSON("/user/aksipaket/totalpaket",
+    $.getJSON("/user/AksiPaket/totalPaket",
         function(data, textStatus, jqXHR) {
             $('#total-paket').html(data)
         }

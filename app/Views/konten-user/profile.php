@@ -17,7 +17,7 @@
                 <div class="panel ">
                     <div class="panel-body">
                         <div role="tabpanel">
-                            <form action="/user/aksiprofile/update" method="POST" id="form-umum" enctype="multipart/form-data">
+                            <form action="/user/AksiProfile/update" method="POST" id="form-umum" enctype="multipart/form-data">
                                 <?= csrf_field() ?>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-3">
@@ -216,7 +216,7 @@
     });
 
     function showData() {
-        $.getJSON("/user/aksiprofile/getDataUser",
+        $.getJSON("/user/AksiProfile/getDataUser",
             function(data, textStatus, jqXHR) {
                 console.table(data);
                 $('#image').html('<img src="' + baseUrl + '/assets/logo/' + data.logo + '" style="max-width: 200px;">')
