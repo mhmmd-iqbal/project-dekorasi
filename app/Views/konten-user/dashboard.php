@@ -19,7 +19,7 @@
                 <i class="fa fa-shopping-cart"></i>
             </div>
             <div class="value">
-                <h1 class="count">
+                <h1 class="count" id="newest-transaksi">
                     0
                 </h1>
                 <p>Transaksi Terbaru</p>
@@ -32,7 +32,7 @@
                 <i class="fa fa-gift"></i>
             </div>
             <div class="value">
-                <h1 class="count">
+                <h1 class="count" id="total-paket">
                     0
                 </h1>
                 <p>Paket Anda</p>
@@ -45,7 +45,7 @@
                 <i class="fa fa-money"></i>
             </div>
             <div class="value">
-                <h1 class=" count2">
+                <h1 class=" count2" id="invoice-saya">
                     0
                 </h1>
                 <p>Invoice Bulan Ini</p>
@@ -58,7 +58,7 @@
                 <i class="fa fa-star-o"></i>
             </div>
             <div class="value">
-                <h1 class=" count3">
+                <h1 class=" count3" id="review-saya">
                     0
                 </h1>
                 <p>Review Tentang Anda</p>
@@ -120,7 +120,7 @@
 
     $.getJSON("/user/aksipaket/totalpaket",
         function(data, textStatus, jqXHR) {
-
+            $('#total-paket').html(data)
         }
     );
 </script>

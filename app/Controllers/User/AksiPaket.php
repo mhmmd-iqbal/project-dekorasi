@@ -11,6 +11,7 @@ class AksiPaket extends BaseController
     use ResponseTrait;
     function __construct()
     {
+        $this->db = new ModelPaket();
         $this->session = \Config\Services::session();
         if ($this->session->username == null) {
             $res = [
@@ -22,8 +23,7 @@ class AksiPaket extends BaseController
 
     function get()
     {
-        $dataModel = new ModelPaket();
-        $list = $dataModel->get_datatables();
+        $list = $this->db->get_datatables();
         $data = array();
         $no = $this->request->getPost('start');
         foreach ($list as $field) {
@@ -39,8 +39,8 @@ class AksiPaket extends BaseController
 
         $output = array(
             "draw" => $this->request->getPost('draw'),
-            "recordsTotal" => $dataModel->count_all(),
-            "recordsFiltered" => $dataModel->count_filtered(),
+            "recordsTotal" => $this->db->count_all(),
+            "recordsFiltered" => $this->db->count_filtered(),
             "data" => $data,
         );
         return $this->respond($output, 200);
@@ -99,8 +99,7 @@ class AksiPaket extends BaseController
             ];
         }
 
-        $dataModel = new ModelPaket();
-        $simpan = $dataModel->save($data);
+        $simpan = $this->db->save($data);
 
         if ($simpan == TRUE) {
             $res = [
@@ -113,17 +112,15 @@ class AksiPaket extends BaseController
 
     function detail($id)
     {
-        $db = new ModelPaket();
         $username = $this->session->username;
-        $data = $db->getPaket($id, $username)->first();
+        $data = $this->db->getPaket($id, $username)->first();
         return $this->respond($data, 200);
     }
 
     function totalPaket()
     {
-        $db = new ModelPaket();
         $username = $this->session->username;
-        $data = $db->getPaket($id, $username)->first();
+        $data = $this->db->countData($username);
         return $this->respond($data, 200);
     }
 }

@@ -96,4 +96,13 @@ class ModelPaket extends Model
 
         return $builder;
     }
+
+    function countData($username)
+    {
+        $builder = $this->table('tb_paket');
+        $builder->select('nama');
+        $builder->where('username', $username);
+        $builder->where('status', TRUE);
+        return $builder->countAll();
+    }
 }
