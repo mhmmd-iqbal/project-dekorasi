@@ -58,7 +58,7 @@
                 <i class="fa fa-star-o"></i>
             </div>
             <div class="value">
-                <h1 class=" count3" id="review-saya">
+                <h1 class=" count3" id="total-review">
                     0
                 </h1>
                 <p>Review Tentang Anda</p>
@@ -121,6 +121,11 @@
     $.getJSON("/user/AksiPaket/totalPaket",
         function(data, textStatus, jqXHR) {
             $('#total-paket').html(data)
+        }
+    );
+    $.getJSON("/user/AksiReviewPaket/totalReview",
+        function(data, textStatus, jqXHR) {
+            $('#total-review').html(data)
         }
     );
 </script>

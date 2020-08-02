@@ -14,13 +14,46 @@
 <?= $this->endSection('css') ?>
 <?= $this->section('konten') ?>
 <div class="row state-overview">
-    <div class="col-lg-12">
+    <div class="col-lg-12" style="padding-bottom: 10px;">
         <button class="btn btn-primary" id="show-modal">
             Tambah Data Paket
         </button>
     </div>
-
-    <div class="col-lg-10" style="padding-top: 10px;">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4> Data Paket</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="">Nama Paket</label>
+                        <input type="text" name="kategori" id="" class="form-control">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label for="">kategori</label>
+                        <input type="text" name="" id="" class="form-control">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label for="">Range Harga</label>
+                        <div class="row row-no-gutters">
+                            <div class="col-md-6 form-group">
+                                <input type="number" name="" id="" class="form-control" placeholder="From...">
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <input type="number" name="" id="" class="form-control" placeholder="To...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <br>
+                        <button class="btn btn-danger btn-block"> Reset</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" style="padding-top: 10px;">
         <div class="panel">
             <div class="panel-body">
                 <div class="table-responsive">
@@ -29,8 +62,11 @@
                             <tr>
                                 <th width="3px">No</th>
                                 <th>Nama Paket</th>
+                                <th>Kategori</th>
                                 <th>Harga (Rp.)</th>
                                 <th>Status</th>
+                                <th>Transaksi Paket</th>
+                                <th>Ulasan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -71,8 +107,20 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-lg-8 form-group">
+                            <label for="">Kategori Paket</label>
+                            <select name="kategori" id="input" class="form-control">
+                                <option value="" disabled selected>-- Pilih Kategori Produk --</option>
+                                <?php foreach ($kategori as $d) : ?>
+                                    <option value="<?= $d['kategori'] ?>"> <?= $d['kategori'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-12">
-                            <label for="">Keterangan</label>
+                            <label for="">Deskripsi Paket</label>
                             <textarea name="keterangan" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
@@ -109,6 +157,15 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <h4 id="paket"></h4>
+                        <p id="kategori">kategori</p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-lg-6 text-left">
+                        <b for="">10 Transaksi berhasil</b>
+                    </div>
+                    <div class="col-lg-6 text-right">
+                        <b for=""> <span id="totalUlasan">0</span> Ulasan Produk</b>
                     </div>
                 </div>
                 <div class="row">
@@ -117,6 +174,9 @@
                         <p id="keterangan"></p>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <a href="" class="btn btn-success" id="detail-produk">Detail Produk</a>
             </div>
         </div>
     </div>
@@ -136,6 +196,7 @@
             responsive: false,
             processing: true,
             serverSide: true,
+            stateSave: true,
             order: [],
 
             ajax: {
@@ -158,6 +219,9 @@
                 data.gambar !== null ? $('#gambar').html('<img src="' + baseUrl + '/assets/paket/' + data.gambar + '" alt="Gambar Paket">') : $('#gambar').html("")
                 $('#paket').html(data.nama + ' - Harga: Rp.' + data.harga)
                 $('#keterangan').html(data.keterangan)
+                $('#kategori').html(data.kategori)
+                $('#totalUlasan').html(data.totalUlasan)
+                $('#detail-produk').prop('href', '/user/paket/' + data.slug)
             }
         );
     })

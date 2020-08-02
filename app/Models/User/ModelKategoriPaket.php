@@ -4,20 +4,13 @@ namespace App\Models\User;
 
 use CodeIgniter\Model;
 
-class ModelPaket extends Model
+class ModelKategoriPaket extends Model
 {
-    protected $table      = 'tb_paket';
+    protected $table      = 'tb_kategori_paket';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'username',
-        'nama',
-        'harga',
-        'keterangan',
         'kategori',
-        'gambar',
-        'slug',
-        'status',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -28,8 +21,8 @@ class ModelPaket extends Model
     {
 
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'nama', 'harga');
-        $column_search = array('nama', 'harga');
+        $column_order = array(null, 'kategori');
+        $column_search = array('kategori');
         $order = array('created_at' => 'desc');
 
         $db->from($this->table);
@@ -85,28 +78,5 @@ class ModelPaket extends Model
         $db->where('username', $username);
         $db->where('status', TRUE);
         return $db->countAllResults();
-    }
-
-    public function getPaket($id, $username)
-    {
-        $builder = $this->table('tb_paket');
-        $builder->select(
-            [
-                'nama',
-                'harga',
-                'keterangan',
-                'kategori',
-                'gambar',
-                'slug',
-                'status',
-                'created_at',
-                'updated_at',
-            ]
-        );
-        $builder->where('id', $id);
-        $builder->where('username', $username);
-        $builder->where('status', TRUE);
-
-        return $builder;
     }
 }

@@ -4,32 +4,18 @@ namespace App\Models\User;
 
 use CodeIgniter\Model;
 
-class ModelPaket extends Model
+class ModelReviewPaket extends Model
 {
-    protected $table      = 'tb_paket';
+    protected $table      = 'tb_review_paket';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
-    protected $allowedFields = [
-        'username',
-        'nama',
-        'harga',
-        'keterangan',
-        'kategori',
-        'gambar',
-        'slug',
-        'status',
-        'created_at',
-        'updated_at',
-        'deleted_at'
-    ];
-
 
     private function _get_query()
     {
 
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'nama', 'harga');
-        $column_search = array('nama', 'harga');
+        $column_order = array(null, 'reviewer_name', 'reviewer_phone', 'point');
+        $column_search = array('reviewer_name', 'reviewer_phone');
         $order = array('created_at' => 'desc');
 
         $db->from($this->table);
@@ -56,7 +42,7 @@ class ModelPaket extends Model
         }
     }
 
-    function get_datatables($username = null)
+    function get_datatables($id_paket = null)
     {
         $db    = \Config\Database::connect()->table($this->table);
         $this->_get_query();
@@ -64,49 +50,49 @@ class ModelPaket extends Model
             $db->limit($_POST['length'], $_POST['start']);
         }
 
-        $db->where('username', $username);
+        $db->where('id_paket', $id_paket);
         $db->where('status', TRUE);
         $query = $db->get();
         return $query->getResultObject();
     }
 
-    function count_filtered($username = null)
+    function count_filtered($id_paket = null)
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $db->where('username', $username);
+        $db->where('id_paket', $id_paket);
         $db->where('status', TRUE);
         $this->_get_query();
         return $db->countAllResults();
     }
 
-    public function count_all($username = null)
+    public function count_all($username)
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $db->where('username', $username);
-        $db->where('status', TRUE);
+        $db->join('tb_paket', 'tb_paket.id = tb_review_paket.id_paket');
+        $db->where('tb_paket.username', $username);
         return $db->countAllResults();
     }
 
-    public function getPaket($id, $username)
+    function review($username)
     {
-        $builder = $this->table('tb_paket');
-        $builder->select(
-            [
-                'nama',
-                'harga',
-                'keterangan',
-                'kategori',
-                'gambar',
-                'slug',
-                'status',
-                'created_at',
-                'updated_at',
-            ]
-        );
-        $builder->where('id', $id);
-        $builder->where('username', $username);
-        $builder->where('status', TRUE);
-
-        return $builder;
+        $db    = \Config\Database::connect()->table($this->table);
+        $db->select([
+            'tb_review_paket.*',
+            'tb_paket.username',
+            'tb_paket.nama'
+        ]);
+        $db->join('tb_paket', 'tb_paket.id = tb_review_paket.id_paket');
+        $db->where('tb_paket.username', $username);
+        $db->orderBy('tb_review_paket.created_at', 'DESC');
+        $db->limit(0, 6);
+        return  $db->get()->getResultObject();
+    }
+    function getBintangCount($username, $jml_bintang)
+    {
+        $db    = \Config\Database::connect()->table($this->table);
+        $db->join('tb_paket', 'tb_paket.id = tb_review_paket.id_paket');
+        $db->where('tb_paket.username', $username);
+        $db->where('tb_review_paket.point', $jml_bintang);
+        return $db->countAllResults();
     }
 }

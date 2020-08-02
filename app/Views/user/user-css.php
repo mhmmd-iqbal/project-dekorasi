@@ -14,6 +14,7 @@
 <link href="<?= base_url() ?>/assets/template/cms/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href="<?= base_url() ?>/assets/template/cms/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?= base_url() ?>/assets/template/cms/css/owl.carousel.css" type="text/css">
+<!-- <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/template/cms/assets/gritter/css/jquery.gritter.css" /> -->
 <!-- Custom styles for this template -->
 <link href="<?= base_url() ?>/assets/template/cms/css/style.css" rel="stylesheet">
 <link href="<?= base_url() ?>/assets/template/cms/css/style-responsive.css" rel="stylesheet" />

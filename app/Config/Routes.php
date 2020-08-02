@@ -39,6 +39,7 @@ $routes->group('admin', ['filter' => 'admin_auth'], function ($routes) {
 	$routes->add('', 'Admin\ControllerAdmin::index');
 	$routes->add('md-admin', 'Admin\ControllerAdmin::dataAdmin');
 	$routes->add('md-user', 'Admin\ControllerAdmin::dataUser');
+	$routes->add('md-kategori', 'Admin\ControllerAdmin::dataKategori');
 	$routes->add('detail/(:segment)', 'Admin\ControllerAdmin::detail/$1');
 });
 $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
@@ -48,6 +49,7 @@ $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->add('account', 'User\ControllerUser::account');
 	$routes->add('profile', 'User\ControllerUser::profile');
 	$routes->add('paket', 'User\ControllerUser::paket');
+	$routes->add('paket/(:segment)', 'User\ControllerUser::detailPaket/$1');
 });
 // $routes->add('admin/dashboard', 'Admin/Dashboard::index', ['filter' => 'admin_auth']);
 

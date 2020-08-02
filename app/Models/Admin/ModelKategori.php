@@ -1,37 +1,27 @@
 <?php
 
-namespace App\Models\User;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
-class ModelPaket extends Model
+class ModelKategori extends Model
 {
-    protected $table      = 'tb_paket';
+    protected $table      = 'tb_kategori_paket';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'username',
-        'nama',
-        'harga',
-        'keterangan',
         'kategori',
-        'gambar',
-        'slug',
-        'status',
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
-
 
     private function _get_query()
     {
-
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'nama', 'harga');
-        $column_search = array('nama', 'harga');
+        $column_order = array(null, 'kategori');
+        $column_search = array('kategori');
         $order = array('created_at' => 'desc');
-
         $db->from($this->table);
         $i = 0;
         foreach ($column_search as $item) {
@@ -56,57 +46,27 @@ class ModelPaket extends Model
         }
     }
 
-    function get_datatables($username = null)
+    function get_datatables()
     {
         $db    = \Config\Database::connect()->table($this->table);
         $this->_get_query();
         if ($_POST['length'] != -1) {
             $db->limit($_POST['length'], $_POST['start']);
         }
-
-        $db->where('username', $username);
-        $db->where('status', TRUE);
         $query = $db->get();
         return $query->getResultObject();
     }
 
-    function count_filtered($username = null)
+    function count_filtered()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $db->where('username', $username);
-        $db->where('status', TRUE);
         $this->_get_query();
         return $db->countAllResults();
     }
 
-    public function count_all($username = null)
+    public function count_all()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $db->where('username', $username);
-        $db->where('status', TRUE);
         return $db->countAllResults();
-    }
-
-    public function getPaket($id, $username)
-    {
-        $builder = $this->table('tb_paket');
-        $builder->select(
-            [
-                'nama',
-                'harga',
-                'keterangan',
-                'kategori',
-                'gambar',
-                'slug',
-                'status',
-                'created_at',
-                'updated_at',
-            ]
-        );
-        $builder->where('id', $id);
-        $builder->where('username', $username);
-        $builder->where('status', TRUE);
-
-        return $builder;
     }
 }

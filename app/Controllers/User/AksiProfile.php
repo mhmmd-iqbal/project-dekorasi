@@ -110,4 +110,47 @@ class AksiProfile extends BaseController
         }
         return $this->respondCreated($res);
     }
+
+    function updateLanjutan()
+    {
+        if ($this->request->getFile('cover')->getName() != '') {
+            $rules = [
+                'cover' => 'uploaded[cover]|max_size[cover,700]|is_image[cover]|mime_in[cover,image/jpg,image/jpeg,image/png]',
+            ];
+
+            if (!$this->validate($rules)) {
+                $validation =  \Config\Services::validation();
+                $res = [
+                    'text'   => $validation->getErrors(),
+                    'status' => FALSE
+                ];
+                return $this->fail($res, 400);
+            }
+
+            $file = $this->request->getFile('cover');
+            $newName = $file->getRandomName();
+            $file->move($this->base_file . '/cover', $newName);
+
+            $data['cover'] =  $newName;
+        }
+        $data['description'] = $this->request->getVar('description', FILTER_SANITIZE_STRING);
+
+
+        $username = $this->session->username;
+
+        $dataModel = new ModelUser();
+        $simpan = $dataModel
+            ->where('username', $username)
+            ->set($data)
+            ->update();
+
+        if ($simpan == TRUE) {
+            $res = [
+                'text'  => 'Data Telah Diperbarui',
+                'status' => TRUE,
+            ];
+            return $this->respondCreated($res);
+        }
+        return $this->fail('Error update data', 400);
+    }
 }

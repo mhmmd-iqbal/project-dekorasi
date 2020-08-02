@@ -70,7 +70,7 @@ class AksiUser extends BaseController
             $row[] = $field->name_usaha == null ? '<i>Belum DIperbarui</i>' : $field->name_usaha;
             $row[] = $field->status == '1' ? '<div class="badge badge-blue">Aktif</div>' : '<div class="badge badge-red">Tidak Aktif</div>';
             $row[] = $field->created_at;
-            $row[] = '<a href="/admin/detail/' . $field->username . '" class="btn btn-info detail btn-sm" style="margin-right: 5px;" value="' . $field->username . '"><i class="fa fa-search"></i> Detail</a>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->username . '"><i class="fa fa-pencil"></i> Edit</button>' . $aktifasi_btn;
+            $row[] = '<a href="/admin/detail/' . $field->username . '" class="btn btn-info detail btn-sm" style="margin-right: 5px;" value="' . $field->username . '"><i class="fa fa-search"></i> </a>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->username . '"><i class="fa fa-pencil"></i> </button>' . $aktifasi_btn;
             $data[] = $row;
         }
 
@@ -84,10 +84,10 @@ class AksiUser extends BaseController
         return $this->respond($output, 200);
     }
 
-    function nonAktif($id)
+    function nonAktif($username)
     {
         $simpan = $this->db
-            ->where('id', $id)
+            ->where('username', $username)
             ->set([
                 'status' => FALSE
             ])
@@ -106,10 +106,10 @@ class AksiUser extends BaseController
         ];
         return $this->respond($res, 400);
     }
-    function aktif($id)
+    function aktif($username)
     {
         $simpan = $this->db
-            ->where('id', $id)
+            ->where('username', $username)
             ->set([
                 'status' => TRUE
             ])

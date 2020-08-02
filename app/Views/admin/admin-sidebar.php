@@ -20,6 +20,7 @@
                  <ul class="sub">
                      <li class="master" id="admin"><a href="/admin/md-admin">Data Admin</a></li>
                      <li class="master" id="user"><a href="/admin/md-user">Data User</a></li>
+                     <li class="master" id="kategori"><a href="/admin/md-kategori">Data Kategori</a></li>
                  </ul>
              </li>
 

@@ -3,6 +3,8 @@
 namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
+use App\Models\User\ModelKategoriPaket;
+use App\Models\User\ModelReviewPaket;
 
 class ControllerUser extends BaseController
 {
@@ -42,13 +44,18 @@ class ControllerUser extends BaseController
     }
     public function review()
     {
+        $db = new ModelReviewPaket();
         $data   = [
             'judul'     => 'USER | Review',
             'username'  => $this->session->username,
-            'active'    => 'review'
+            'active'    => 'review',
+            'review'    => $db->review($this->session->username),
+            'total_review'  => $db->count_all($this->session->username),
         ];
+        // dd($data);
         return view('konten-user/review', $data);
     }
+
     public function account()
     {
         $data   = [
@@ -66,6 +73,14 @@ class ControllerUser extends BaseController
             'username'  => $this->session->username,
             'active'    => 'paket'
         ];
+
+        $db = new ModelKategoriPaket();
+        $data['kategori'] = $db->findAll();
         return view('konten-user/paket', $data);
+    }
+
+    function detailpaket($id)
+    {
+        return "$id belum buat ";
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controllers\User;
 
 use App\Controllers\BaseController;
 use App\Models\User\ModelPaket;
+use App\Models\User\ModelReviewPaket;
 use CodeIgniter\API\ResponseTrait;
 
 class AksiPaket extends BaseController
@@ -23,30 +24,40 @@ class AksiPaket extends BaseController
 
     function get()
     {
-        $list = $this->db->get_datatables();
+        $username = $this->session->username;
+        $list = $this->db->get_datatables($username);
         $data = array();
         $no = $this->request->getPost('start');
         foreach ($list as $field) {
+            // Count Total Ulasan Per Data
+            $dbReviewer = new ModelReviewPaket();
+            $total_ulasan = $dbReviewer->count_all($field->id);
+
+            // Show Data
             $no++;
             $row = array();
             $row[] = $no;
             $row[] = $field->nama;
+            $row[] = $field->kategori;
             $row[] = $field->harga;
             $row[] = $field->status == '1' ? '<div class="badge badge-blue">Aktif</div>' : '<div class="badge badge-red">Tidak Aktif</div>';
-            $row[] = '<button style="margin-right: 5px;" class="btn btn-sm btn-info  detail" value="' . $field->id . '"><i class="fa fa-search"></i> Detail</button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->id . '"><i class="fa fa-pencil"></i> Edit</button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-danger  delete" value="' . $field->id . '"><i class="fa fa-trash-o"></i> Hapus</button>';
+            $row[] = "10 Tranksasi";
+            $row[] = $total_ulasan . " Ulasan";
+            $row[] = '<button style="margin-right: 5px;" class="btn btn-sm btn-info  detail" value="' . $field->id . '"><i class="fa fa-search"></i> </button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->id . '"><i class="fa fa-pencil"></i> </button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-danger  delete" value="' . $field->id . '"><i class="fa fa-trash-o"></i> </button>';
             $data[] = $row;
         }
 
         $output = array(
             "draw" => $this->request->getPost('draw'),
-            "recordsTotal" => $this->db->count_all(),
-            "recordsFiltered" => $this->db->count_filtered(),
+            "recordsTotal" => $this->db->count_all($username),
+            "recordsFiltered" => $this->db->count_filtered($username),
             "data" => $data,
         );
         return $this->respond($output, 200);
     }
     function tambah()
     {
+        helper('text');
         if ($this->request->getFile('gambar')->getName() == '') {
             $rules = [
                 'nama' => 'required|max_length[255]',
@@ -65,9 +76,11 @@ class AksiPaket extends BaseController
             $data = [
                 'username' => $this->session->username,
                 'nama' => $this->request->getVar('nama', FILTER_SANITIZE_STRING),
+                'kategori' => $this->request->getVar('kategori', FILTER_SANITIZE_STRING),
                 'harga' => $this->request->getVar('harga', FILTER_SANITIZE_NUMBER_INT),
                 'keterangan' => $this->request->getVar('keterangan', FILTER_SANITIZE_STRING),
-                'status'    => TRUE
+                'status'    => TRUE,
+                'slug'    => random_string('alnum', 15)
             ];
         } else {
             $rules = [
@@ -92,10 +105,12 @@ class AksiPaket extends BaseController
             $data = [
                 'username' => $this->session->username,
                 'nama' => $this->request->getVar('nama', FILTER_SANITIZE_STRING),
+                'kategori' => $this->request->getVar('kategori', FILTER_SANITIZE_STRING),
                 'harga' => $this->request->getVar('harga', FILTER_SANITIZE_NUMBER_INT),
                 'keterangan' => $this->request->getVar('keterangan', FILTER_SANITIZE_STRING),
                 'gambar' => $newName,
-                'status'    => TRUE
+                'status'    => TRUE,
+                'slug'    => random_string('alnum', 15)
             ];
         }
 
@@ -114,13 +129,15 @@ class AksiPaket extends BaseController
     {
         $username = $this->session->username;
         $data = $this->db->getPaket($id, $username)->first();
+        $dbReviewer = new ModelReviewPaket();
+        $data['totalUlasan'] = $dbReviewer->count_all($id);
         return $this->respond($data, 200);
     }
 
     function totalPaket()
     {
         $username = $this->session->username;
-        $data = $this->db->countData($username);
+        $data = $this->db->count_all($username);
         return $this->respond($data, 200);
     }
 }

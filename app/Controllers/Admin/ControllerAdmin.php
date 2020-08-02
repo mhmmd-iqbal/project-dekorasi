@@ -41,6 +41,15 @@ class ControllerAdmin extends BaseController
         ];
         return view('konten-admin/dataUser', $data);
     }
+    function dataKategori()
+    {
+        $data   = [
+            'judul'     => 'ADMIN | Data Kategori',
+            'username'  => $this->session->username,
+            'active'    => 'masterdata'
+        ];
+        return view('konten-admin/dataKategori', $data);
+    }
 
     function dataPaket()
     {
