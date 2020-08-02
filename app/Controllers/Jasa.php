@@ -10,7 +10,7 @@ class Jasa extends BaseController
 			'tittle' 	=> 'IDA | Jasa Dekoraasi',
 			'active'	=> 'jasa'
 		];
-		return view('main/jasa', $data);
+		return view('konten-main/jasa', $data);
 	}
 
 	//--------------------------------------------------------------------

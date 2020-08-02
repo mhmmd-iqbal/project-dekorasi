@@ -26,11 +26,12 @@
 
 <!-- Another CSS For Plugin -->
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/toaster/jquery.toast.min.css">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/datatables/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/assets/confirm-button/jquery-confirm.min.css">
 
 <style type="text/css">
     .gambar {
-        max-width: 400px;
+        max-width: 300px;
         /*width: 400px;*/
         height: auto;
         float: none;

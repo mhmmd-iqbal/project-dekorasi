@@ -14,6 +14,8 @@
 <!--common script for all pages-->
 <script src="<?= base_url() ?>/assets/template/cms/js/common-scripts.js"></script>
 
+<!-- SCRIPT FOR PLUGIN -->
+<script src="<?= base_url() ?>/assets/datatables/js/jquery.dataTables.min.js"></script>
 
 
 <script>

@@ -67,8 +67,8 @@ class Login extends BaseController
             ];
             return $this->setResponseFormat('json')->respond($res);
         }
-        $username = $this->request->getVar('username');
-        $password = $this->request->getVar('password');
+        $username = $this->request->getVar('username', FILTER_SANITIZE_STRING);
+        $password = $this->request->getVar('password', FILTER_SANITIZE_STRING);
         $data = $db->checkUser($username)->first();
 
         if ($data == null) {

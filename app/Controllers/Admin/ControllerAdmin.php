@@ -20,7 +20,7 @@ class ControllerAdmin extends BaseController
             'username'  => $this->session->username,
             'active'    => 'dashboard'
         ];
-        return view('admin/template', $data);
+        return view('konten-admin/template', $data);
     }
 
     function dataAdmin()
@@ -30,7 +30,7 @@ class ControllerAdmin extends BaseController
             'username'  => $this->session->username,
             'active'    => 'masterdata'
         ];
-        return view('admin/dataAdmin', $data);
+        return view('konten-admin/dataAdmin', $data);
     }
 
     function dataUser()
@@ -40,7 +40,7 @@ class ControllerAdmin extends BaseController
             'username'  => $this->session->username,
             'active'    => 'masterdata'
         ];
-        return view('admin/dataAdmin', $data);
+        return view('konten-admin/dataAdmin', $data);
     }
 
     function dataPaket()
@@ -50,6 +50,6 @@ class ControllerAdmin extends BaseController
             'username'  => $this->session->username,
             'active'    => 'masterdata'
         ];
-        return view('admin/dataAdmin', $data);
+        return view('konten-admin/dataAdmin', $data);
     }
 }

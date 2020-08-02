@@ -10,7 +10,7 @@ class Home extends BaseController
 			'tittle' 	=> 'IDA | Dashboard',
 			'active'	=> 'home'
 		];
-		return view('main/home', $data);
+		return view('konten-main/home', $data);
 	}
 	//--------------------------------------------------------------------
 

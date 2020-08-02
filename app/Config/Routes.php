@@ -46,6 +46,8 @@ $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->add('faq', 'User\ControllerUser::faq');
 	$routes->add('review', 'User\ControllerUser::review');
 	$routes->add('account', 'User\ControllerUser::account');
+	$routes->add('profile', 'User\ControllerUser::profile');
+	$routes->add('paket', 'User\ControllerUser::paket');
 });
 // $routes->add('admin/dashboard', 'Admin/Dashboard::index', ['filter' => 'admin_auth']);
 

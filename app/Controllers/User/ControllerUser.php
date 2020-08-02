@@ -19,7 +19,17 @@ class ControllerUser extends BaseController
             'username'  => $this->session->username,
             'active'    => 'dashboard'
         ];
-        return view('user/dashboard', $data);
+        return view('konten-user/dashboard', $data);
+    }
+
+    public function profile()
+    {
+        $data   = [
+            'judul'     => 'USER | Profile',
+            'username'  => $this->session->username,
+            'active'    => 'profile'
+        ];
+        return view('konten-user/profile', $data);
     }
     public function faq()
     {
@@ -28,7 +38,7 @@ class ControllerUser extends BaseController
             'username'  => $this->session->username,
             'active'    => 'faq'
         ];
-        return view('user/faq', $data);
+        return view('konten-user/faq', $data);
     }
     public function review()
     {
@@ -37,7 +47,7 @@ class ControllerUser extends BaseController
             'username'  => $this->session->username,
             'active'    => 'review'
         ];
-        return view('user/review', $data);
+        return view('konten-user/review', $data);
     }
     public function account()
     {
@@ -47,6 +57,14 @@ class ControllerUser extends BaseController
             'active'    => 'account'
         ];
 
-        return view('user/account', $data);
+        return view('konten-user/account', $data);
+    }
+    function paket(){
+        $data = [
+            'judul' => 'USER | Daftar Paket',
+            'username'  => $this->session->username,
+            'active'    => 'paket'
+        ];
+        return view('konten-user/paket', $data);
     }
 }

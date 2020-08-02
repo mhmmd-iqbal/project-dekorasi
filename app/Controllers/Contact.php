@@ -10,7 +10,7 @@ class Contact extends BaseController
             'tittle'     => 'IDA | Kontak Kami',
             'active'    => 'contact'
         ];
-        return view('main/contact', $data);
+        return view('konten-main/contact', $data);
     }
     //--------------------------------------------------------------------
 
