@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 
 class ModelKategori extends Model
 {
-    protected $table      = 'tb_kategori_paket';
+    protected $table      = 'category_product';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
-        'kategori',
+        'category_name',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -19,8 +19,8 @@ class ModelKategori extends Model
     private function _get_query()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'kategori');
-        $column_search = array('kategori');
+        $column_order = array(null, 'categori_name');
+        $column_search = array('categori_name');
         $order = array('created_at' => 'desc');
         $db->from($this->table);
         $i = 0;

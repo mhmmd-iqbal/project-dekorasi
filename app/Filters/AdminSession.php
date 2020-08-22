@@ -16,7 +16,7 @@ class AdminSession implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Do something here
-        if (($this->session->level != 1) || (!$this->session->logged_in)) {
+        if ($this->session->level != 'admin') {
             return redirect()->to('/');
         }
     }

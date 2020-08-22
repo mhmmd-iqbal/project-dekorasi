@@ -12,6 +12,7 @@
         <?= $this->include('admin/admin-sidebar') ?>
         <!--main content start-->
         <section id="main-content">
+
             <section class="wrapper">
                 <?= $this->renderSection('konten') ?>
             </section>

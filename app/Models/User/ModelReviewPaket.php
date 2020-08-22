@@ -72,6 +72,12 @@ class ModelReviewPaket extends Model
         $db->where('tb_paket.username', $username);
         return $db->countAllResults();
     }
+    public function count($id)
+    {
+        $db    = \Config\Database::connect()->table($this->table);
+        $db->where('id_paket', $id);
+        return $db->countAllResults();
+    }
 
     function review($username)
     {

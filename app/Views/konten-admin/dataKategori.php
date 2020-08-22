@@ -10,7 +10,7 @@
     <div class="col-md-10">
         <div class="panel">
             <div class="panel-heading">
-                <h4> Master Data User</h4>
+                <h4> Master Data Kategori Produk</h4>
             </div>
 
             <div class="panel-body">
@@ -19,8 +19,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori</th>
-                                <th>Bergabung Pada</th>
+                                <th>Category Name</th>
+                                <th>Created At</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,18 +37,17 @@
 <?= $this->section('modal') ?>
 
 <div class="modal fade" id="modal-form">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Tambah Data User</h4>
+                <h4 class="modal-title">Tambah Data Kategori Produk</h4>
             </div>
             <div class="modal-body">
-                <form action="/admin/AksiKategori/add" method="POST" id="submit-form">
+                <form action="/sys/category" method="POST" id="submit-form">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <label for="">Kategori</label>
-                            <input type="text" class="form-control" placeholder="Username..." name="kategori" autocomplete="off">
+                            <input type="text" class="form-control" placeholder="New Category Name..." name="category_name">
                         </div>
 
                     </div>
@@ -86,7 +85,7 @@
             order: [],
 
             ajax: {
-                url: "/admin/AksiKategori/get",
+                url: "/sys/category/all",
                 type: "POST",
             },
 

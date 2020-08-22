@@ -204,24 +204,24 @@
             kab.innerHTML = opt_kab
         }
     )
-    tab.addEventListener("click", function() {
-        let html_provinsi_aceh = ''
-        let provinsi_aceh = document.getElementById('show_provinsi_aceh')
-        $.getJSON("https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=11",
-            function(data, textStatus, jqXHR) {
-                console.table(data);
-                data.kota_kabupaten.forEach(element => {
-                    html_provinsi_aceh += '<div class="col-lg-4">' +
-                        '<div class="form-check form-check-inline">' +
-                        '<input class="form-check-input" type="checkbox" data-target="id-' + element.id + '" name="" value="' + element.nama + '" style="margin-right: 5px">' +
-                        '<label class="form-check-label" style="font-weight: 500;" for="inlineCheckbox1" > ' + element.nama + '</label>' +
-                        '</div>' +
-                        '</div>'
-                });
-                provinsi_aceh.innerHTML = html_provinsi_aceh
-            }
-        );
-    });
+    // tab.addEventListener("click", function() {
+    //     let html_provinsi_aceh = ''
+    //     let provinsi_aceh = document.getElementById('show_provinsi_aceh')
+    //     $.getJSON("https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=11",
+    //         function(data, textStatus, jqXHR) {
+    //             console.table(data);
+    //             data.kota_kabupaten.forEach(element => {
+    //                 html_provinsi_aceh += '<div class="col-lg-4">' +
+    //                     '<div class="form-check form-check-inline">' +
+    //                     '<input class="form-check-input" type="checkbox" data-target="id-' + element.id + '" name="" value="' + element.nama + '" style="margin-right: 5px">' +
+    //                     '<label class="form-check-label" style="font-weight: 500;" for="inlineCheckbox1" > ' + element.nama + '</label>' +
+    //                     '</div>' +
+    //                     '</div>'
+    //             });
+    //             provinsi_aceh.innerHTML = html_provinsi_aceh
+    //         }
+    //     );
+    // });
 
     const submit_form_umum = document.getElementById("submit-form-umum")
     const form_umum = document.getElementById("form-umum")

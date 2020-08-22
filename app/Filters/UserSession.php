@@ -16,7 +16,8 @@ class UserSession implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         // Do something here
-        if (($this->session->level != 2) || (!$this->session->logged_in)) {
+        // Filter For Seller
+        if ($this->session->level != 'seller') {
             return redirect()->to('/');
         }
     }

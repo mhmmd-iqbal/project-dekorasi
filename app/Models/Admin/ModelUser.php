@@ -6,24 +6,35 @@ use CodeIgniter\Model;
 
 class ModelUser extends Model
 {
-    protected $table      = 'tb_user';
+    protected $table      = 'user';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
         'username',
-        'name',
-        'pass',
-        'phone',
+        'email',
+        'password',
         'status',
+        'level',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+    public function login($username, $email, $login_as)
+    {
+        $builder = $this->table('user');
+        $builder->select(['username', 'password', 'status', 'level']);
+        $builder->where('username', $username);
+        $builder->where('email', $email);
+        $builder->where('level', $login_as);
+        $builder->where('status', TRUE);
+        return $builder;
+    }
+
     private function _get_query()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'username', 'phone');
+        $column_order = array(null, 'username', 'email');
         $column_search = array('username');
         $order = array('created_at' => 'desc');
         $db->from($this->table);

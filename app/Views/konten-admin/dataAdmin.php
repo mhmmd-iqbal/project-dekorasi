@@ -47,8 +47,9 @@
                             <tr>
                                 <th>#</th>
                                 <th>Username</th>
-                                <th>Status</th>
+                                <th>Email</th>
                                 <th>Created At</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -71,13 +72,16 @@
                 <h4 class="modal-title">Tambah Data Admin</h4>
             </div>
             <div class="modal-body">
-                <form action="/admin/AksiAdmin/addAdmin" method="POST" id="submit-form">
+                <form action="/sys/admin" method="POST" id="submit-form">
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Username..." name="username" autocomplete="off">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password..." name="pass" autocomplete="off">
+                        <input type="email" class="form-control" placeholder="Email..." name="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password..." name="password" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <strong>Status</strong>
@@ -124,7 +128,7 @@
             order: [],
 
             ajax: {
-                url: "/admin/AksiAdmin/get",
+                url: "/sys/admin/all",
                 type: "POST",
             },
 
@@ -179,19 +183,34 @@
 
     $("#data-table").on('click', '.non-aktif', function(e) {
         let id = $(this).val()
-        $.getJSON("/admin/AksiAdmin/nonAktif/" + id,
-            function(data, textStatus, jqXHR) {
+        $.ajax({
+            type: "POST",
+            url: "/sys/admin/deactivate/",
+            data: {
+                "id": id,
+                "_token": '<?= csrf_token(); ?>'
+            },
+            dataType: "JSON",
+            success: function(response) {
                 showData()
             }
-        );
+        });
     })
     $("#data-table").on('click', '.aktif', function(e) {
         let id = $(this).val()
-        $.getJSON("/admin/AksiAdmin/aktif/" + id,
-            function(data, textStatus, jqXHR) {
+
+        $.ajax({
+            type: "POST",
+            url: "/sys/admin/activate/",
+            data: {
+                "id": id,
+                "_token": '<?= csrf_token(); ?>'
+            },
+            dataType: "JSON",
+            success: function(response) {
                 showData()
             }
-        );
+        });
     })
 </script>
 <?= $this->endSection('js') ?>

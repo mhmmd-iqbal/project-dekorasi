@@ -17,9 +17,9 @@
  				</a>
  			</li>
  			<li>
- 				<a href="/jasa">
+ 				<a href="/">
  					<i class="fa fa-shopping-cart"></i>
- 					<span>Data Pemesanan Jasa</span>
+ 					<span>Data Produk</span>
  				</a>
  			</li>
  			<li>
@@ -28,6 +28,7 @@
  					<span>Paket Jasa</span>
  				</a>
  			</li>
+
 
  			<li>
  				<a class="<?= $active == 'invoice' ? 'active' : ''  ?>" href="/user/invoice">
@@ -38,7 +39,7 @@
  			<li>
  				<a class="<?= $active == 'review' ? 'active' : ''  ?>" href="/user/review">
  					<i class="fa fa-star"></i>
- 					<span>Ulasan Untuk Anda</span>
+ 					<span>Review</span>
  				</a>
  			</li>
  			<!-- <li class="sub-menu">

@@ -31,7 +31,7 @@ class AksiPaket extends BaseController
         foreach ($list as $field) {
             // Count Total Ulasan Per Data
             $dbReviewer = new ModelReviewPaket();
-            $total_ulasan = $dbReviewer->count_all($field->id);
+            $total_ulasan = $dbReviewer->count($field->id);
 
             // Show Data
             $no++;
@@ -130,7 +130,7 @@ class AksiPaket extends BaseController
         $username = $this->session->username;
         $data = $this->db->getPaket($id, $username)->first();
         $dbReviewer = new ModelReviewPaket();
-        $data['totalUlasan'] = $dbReviewer->count_all($id);
+        $data['totalUlasan'] = $dbReviewer->count($id);
         return $this->respond($data, 200);
     }
 

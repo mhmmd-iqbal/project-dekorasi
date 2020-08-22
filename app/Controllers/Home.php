@@ -6,11 +6,12 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		$data 	= [
-			'tittle' 	=> 'IDA | Dashboard',
-			'active'	=> 'home'
-		];
-		return view('konten-main/home', $data);
+		// $data 	= [
+		// 	'tittle' 	=> 'IDA | Dashboard',
+		// 	'active'	=> 'home'
+		// ];
+		// return view('konten-main/home', $data);
+		return view('konten-main/development');
 	}
 	//--------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
          <!-- sidebar menu start-->
          <ul class="sidebar-menu" id="nav-accordion">
              <li>
-                 <a class="<?= $active == 'dashboard' ? 'active' : '' ?>" href="/admin">
+                 <a class="<?= $active == 'dashboard' ? 'active' : '' ?>" href="/sys">
                      <i class="fa fa-dashboard"></i>
                      <span>Dashboard</span>
                  </a>
@@ -18,9 +18,11 @@
                      <span>Master Data</span>
                  </a>
                  <ul class="sub">
-                     <li class="master" id="admin"><a href="/admin/md-admin">Data Admin</a></li>
-                     <li class="master" id="user"><a href="/admin/md-user">Data User</a></li>
-                     <li class="master" id="kategori"><a href="/admin/md-kategori">Data Kategori</a></li>
+                     <li class="master" id="admin"><a href="/sys/admin">Data Admin</a></li>
+                     <li class="master" id="user"><a href="/sys/user">Data User</a></li>
+                     <li class="master" id="seller"><a href="/sys/seller">Data Seller</a></li>
+                     <li class="master" id="customer"><a href="/sys/customer">Data Customer</a></li>
+                     <li class="master" id="kategori"><a href="/sys/category">Data Kategori</a></li>
                  </ul>
              </li>
 

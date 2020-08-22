@@ -6,23 +6,25 @@ use CodeIgniter\Model;
 
 class ModelAdmin extends Model
 {
-    protected $table      = 'tb_admin';
+    protected $table      = 'admin';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
     protected $allowedFields = [
         'username',
-        'pass',
+        'email',
+        'password',
         'status',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function checkUser($username)
+    public function login_admin($username, $email)
     {
-        $builder = $this->table('tb_admin');
-        $builder->select(['username', 'pass', 'status']);
+        $builder = $this->table('admin');
+        $builder->select(['username', 'password', 'status']);
         $builder->where('username', $username);
+        $builder->where('email', $email);
         $builder->where('status', TRUE);
         return $builder;
     }
