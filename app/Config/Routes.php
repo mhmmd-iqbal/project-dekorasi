@@ -77,6 +77,12 @@ $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->add('', 'User\HomeController::index');
 
 	$routes->get('profile', 'User\ProfileController::index');
+	$routes->get('profile/get', 'User\ProfileController::get');
+	$routes->post('profile', 'User\ProfileController::update');
+
+	$routes->get('product', 'User\ProductController::index');
+	$routes->post('product/all', 'User\ProductController::get');
+	$routes->get('product/new', 'User\ProductController::new');
 
 
 	$routes->add('faq', 'User\ControllerUser::faq');

@@ -65,7 +65,7 @@ class CreateTableSeller extends Migration
 			],
 			'company_logo'	=> [
 				'type' => 'VARCHAR',
-				'constraint'	=> 15,
+				'constraint'	=> 255,
 				'null'		=> TRUE
 			],
 			'created_at'  => [

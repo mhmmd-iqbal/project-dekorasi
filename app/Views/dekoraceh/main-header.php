@@ -4,7 +4,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ogani | Template</title>
+    <title><?= $tittle ?></title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -18,5 +18,32 @@
     <link rel="stylesheet" href="<?= base_url() ?>/assets/main/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/main/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<?= base_url() ?>/assets/main/css/style.css" type="text/css">
+    <style>
+        .hero__categories__all {
+            background: #b22222;
+            position: relative;
+            padding: 10px 25px 10px 40px;
+            cursor: pointer;
+        }
+
+        .site-btn {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: inline-block;
+            padding: 13px 30px 12px;
+            background: #b22222;
+            border: none;
+        }
+
+        .header__menu ul li.active a {
+            color: #b22222;
+        }
+
+        .header__top {
+            background: #fbfbfb;
+        }
+    </style>
     <?= $this->renderSection('css') ?>
 </head>

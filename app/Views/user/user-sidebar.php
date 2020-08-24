@@ -17,7 +17,7 @@
  				</a>
  			</li>
  			<li>
- 				<a href="/">
+ 				<a class="<?= $active == 'product' ? 'active' : ''  ?>" href="/user/product">
  					<i class="fa fa-shopping-cart"></i>
  					<span>Data Produk</span>
  				</a>

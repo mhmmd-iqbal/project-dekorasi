@@ -9,20 +9,12 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>Kategori</span>
                     </div>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <?php foreach ($category as $d) : ?>
+                            <li><a href="#"><?= $d->category_name ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
@@ -31,14 +23,14 @@
                     <div class="hero__search__form">
                         <form action="#">
                             <div class="hero__search__categories">
-                                All Categories
+                                Cari Produk
                                 <span class="arrow_carrot-down"></span>
                             </div>
                             <input type="text" placeholder="What do yo u need?">
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
-                    <div class="hero__search__phone">
+                    <!-- <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
                             <i class="fa fa-phone"></i>
                         </div>
@@ -46,14 +38,14 @@
                             <h5>+65 11.188.888</h5>
                             <span>support 24/7 time</span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="hero__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/hero/banner.jpg">
+                <div class="hero__item set-bg" data-setbg="<?= base_url() ?>/assets/img/bg2.jpg">
                     <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br />100% Organic</h2>
-                        <p>Free Pickup and Delivery Available</p>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
+                        <!-- <span>FRUIT FRESH</span> -->
+                        <h2 style="color: white;">JASA<br />DEKOR</h2>
+                        <p style="color: white">Cari jasa dekorasi untuk Hajatan, Pesta, Akikah, dan lainnya di sini</p>
+                        <!-- <a href="#" class="primary-btn">PESAN SEKARANG</a> -->
                     </div>
                 </div>
             </div>
@@ -66,31 +58,13 @@
     <div class="container">
         <div class="row">
             <div class="categories__slider owl-carousel">
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-1.jpg">
-                        <h5><a href="#">Fresh Fruit</a></h5>
+                <?php foreach ($category as $d) : ?>
+                    <div class="col-lg-3">
+                        <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-1.jpg">
+                            <h5><a href="#"><?= $d->category_name ?></a></h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-2.jpg">
-                        <h5><a href="#">Dried Fruit</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-3.jpg">
-                        <h5><a href="#">Vegetables</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-4.jpg">
-                        <h5><a href="#">drink fruits</a></h5>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-5.jpg">
-                        <h5><a href="#">drink fruits</a></h5>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
@@ -98,7 +72,7 @@
 <!-- Categories Section End -->
 
 <!-- Featured Section Begin -->
-<section class="featured spad">
+<!-- <section class="featured spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -239,11 +213,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Featured Section End -->
 
 <!-- Banner Begin -->
-<div class="banner">
+<div class="banner featured">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -265,9 +239,9 @@
 <section class="latest-product spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="latest-product__text">
-                    <h4>Latest Products</h4>
+                    <h4>Produk Terbaru</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <a href="#" class="latest-product__item">
@@ -330,9 +304,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-6 col-md-6">
                 <div class="latest-product__text">
-                    <h4>Top Rated Products</h4>
+                    <h4>Paling Diminati</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             <a href="#" class="latest-product__item">
@@ -395,71 +369,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Review Products</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>
@@ -471,7 +381,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title from-blog__title">
-                    <h2>From The Blog</h2>
+                    <h2>Informasi Untuk Anda</h2>
                 </div>
             </div>
         </div>
