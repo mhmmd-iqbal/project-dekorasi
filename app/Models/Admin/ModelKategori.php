@@ -11,6 +11,8 @@ class ModelKategori extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'category_name',
+        'cover',
+        'slug',
         'created_at',
         'updated_at',
         'deleted_at',

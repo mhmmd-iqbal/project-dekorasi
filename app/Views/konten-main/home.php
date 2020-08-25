@@ -13,7 +13,7 @@
                     </div>
                     <ul>
                         <?php foreach ($category as $d) : ?>
-                            <li><a href="#"><?= $d->category_name ?></a></li>
+                            <li><a href="/kategori/<?= $d->slug ?>"><?= $d->category_name ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
             <div class="categories__slider owl-carousel">
                 <?php foreach ($category as $d) : ?>
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/main/img/categories/cat-1.jpg">
+                        <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/cover/<?= $d->cover ?>">
                             <h5><a href="#"><?= $d->category_name ?></a></h5>
                         </div>
                     </div>

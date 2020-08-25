@@ -236,7 +236,7 @@
             processData: false,
             beforeSend: () => {
                 loading()
-        },
+            },
             success: (res) => {
                 swal.close()
                 if (res.status === true) {

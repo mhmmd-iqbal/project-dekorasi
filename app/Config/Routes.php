@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 
 $routes->group('/', function ($routes) {
 	$routes->get('', 'HomeController::index');
+	$routes->get('kategori/(:segment)', 'ProductController::index/$1');
 	$routes->get('login', 'LoginController::index');
 	$routes->post('login', 'LoginController::index');
 	$routes->get('cms', 'LoginController::admin');

@@ -44,6 +44,18 @@
         .header__top {
             background: #fbfbfb;
         }
+
+        .categories__item h5 a {
+            font-size: 20px;
+            color: #fbd0bd;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            padding: 12px 0 10px;
+            background: none;
+            display: block;
+            -webkit-text-stroke: 1px #b22222;
+        }
     </style>
     <?= $this->renderSection('css') ?>
 </head>

@@ -27,9 +27,22 @@ class CategoryProductController extends BaseController
 
     function create()
     {
+        $category_name = $this->request->getVar('category_name', FILTER_SANITIZE_STRING);
+        $data = [
+            'category_name' => $category_name,
+            'slug'          => strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $category_name))),
+        ];
+
         $rules = [
             'category_name' => 'required|max_length[100]',
+            // 'cover'         => 'uploaded[cover]|max_size[cover,600]|is_image[cover]',
         ];
+
+        $file = $this->request->getFile('cover');
+        $newName = $file->getRandomName();
+        $file->move($this->base_file . '/cover', $newName);
+        $data['cover'] = $newName;
+
         if (!$this->validate($rules)) {
             $validation =  \Config\Services::validation();
             $res = [
@@ -39,9 +52,7 @@ class CategoryProductController extends BaseController
             return $this->fail($res, 400);
         }
 
-        $simpan = $this->db->save([
-            'category_name' => $this->request->getVar('category_name', FILTER_SANITIZE_STRING),
-        ]);
+        $simpan = $this->db->save($data);
 
         if ($simpan == TRUE) {
             $res = [
@@ -61,9 +72,11 @@ class CategoryProductController extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
+            $row[] = '<div class="preview"><img src="' . base_url() . '/assets/cover/' . $field->cover . '" /></div>';
             $row[] = $field->category_name;
+            $row[] = $field->slug;
             $row[] = $field->created_at;
-            $row[] = '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->id . '"><i class="fa fa-pencil"></i> Edit</button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-danger  delete" value="' . $field->id . '"><i class="fa fa-times"></i> Delete</button>';
+            $row[] =  '<button style="margin-right: 5px;" class="btn btn-sm btn-success  update" value="' . $field->id . '"><i class="fa fa-pencil"></i> Edit</button>' . '<button style="margin-right: 5px;" class="btn btn-sm btn-danger  delete" value="' . $field->id . '"><i class="fa fa-times"></i> Delete</button>';
             $data[] = $row;
         }
 
