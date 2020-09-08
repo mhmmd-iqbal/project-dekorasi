@@ -16,6 +16,7 @@
                 <?= $this->renderSection('konten') ?>
             </section>
         </section>
+        <?= $this->renderSection('modal') ?>
         <!--main content end-->
         <?php //echo $this->include('user/user-footer')
         ?>

@@ -22,11 +22,12 @@
                      <li class="master" id="user"><a href="/sys/user">Data User</a></li>
                      <li class="master" id="seller"><a href="/sys/seller">Data Seller</a></li>
                      <li class="master" id="customer"><a href="/sys/customer">Data Customer</a></li>
-                     <li class="master" id="kategori"><a href="/sys/category">Data Kategori</a></li>
+                     <li class="master" id="kategori"><a href="/sys/category">Data Kategori Produk</a></li>
+                     <li class="master" id="kategori_blog"><a href="/sys/cat_blog">Data Kategori Blog</a></li>
                  </ul>
              </li>
 
-             <li>
+             <!-- <li>
                  <a class="" href="index.html">
                      <i class="fa fa-th"></i>
                      <span>Data Produk User</span>
@@ -56,7 +57,7 @@
                      <li><a href="">Data Pembeli</a></li>
                      <li><a href="">Invoice</a></li>
                  </ul>
-             </li>
+             </li> -->
              <li>
                  <a href="">
                      <i class="fa fa-user"></i>

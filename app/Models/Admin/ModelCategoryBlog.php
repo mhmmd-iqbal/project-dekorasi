@@ -1,22 +1,27 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Admin;
 
 use CodeIgniter\Model;
 
-class PendidikanModel extends Model
+class ModelCategoryBlog extends Model
 {
-    protected $table      = 'tb_pendidikan';
+    protected $table      = 'category_blog';
     protected $primaryKey = 'id';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama_sekolah', 'asal_sekolah', 'jenjang', 'tahun', 'ijazah'];
+    protected $allowedFields = [
+        'category_name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
 
     private function _get_query()
     {
         $db    = \Config\Database::connect()->table($this->table);
-        $column_order = array(null, 'nama_sekolah', 'asal_sekolah', 'tahun');
-        $column_search = array('nama_sekolah');
-        $order = array('tahun' => 'desc');
+        $column_order = array(null, 'category_name');
+        $column_search = array('category_name');
+        $order = array('created_at' => 'desc');
         $db->from($this->table);
         $i = 0;
         foreach ($column_search as $item) {

@@ -22,26 +22,6 @@
  					<span>Data Produk</span>
  				</a>
  			</li>
- 			<li>
- 				<a class="<?= $active == 'paket' ? 'active' : ''  ?>" href="/user/paket">
- 					<i class="fa fa-th"></i>
- 					<span>Paket Jasa</span>
- 				</a>
- 			</li>
-
-
- 			<li>
- 				<a class="<?= $active == 'invoice' ? 'active' : ''  ?>" href="/user/invoice">
- 					<i class="fa fa-credit-card"></i>
- 					<span>Invoice</span>
- 				</a>
- 			</li>
- 			<li>
- 				<a class="<?= $active == 'review' ? 'active' : ''  ?>" href="/user/review">
- 					<i class="fa fa-star"></i>
- 					<span>Review</span>
- 				</a>
- 			</li>
  			<!-- <li class="sub-menu">
 				 <a href="javascript:;">
 					 <i class=" fa fa-bar-chart-o"></i>

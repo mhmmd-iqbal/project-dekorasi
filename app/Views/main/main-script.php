@@ -17,6 +17,7 @@
 <script src="<?= base_url() ?>/assets/sweetalert/sweetalert.min.js"></script>
 <script src="<?= base_url() ?>/assets/toaster/jquery.toast.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="<?= base_url() ?>/assets/owncarousel/own.carousel.min.js"></script>
 <script>
     function notif(title, text, icon) {
         swal({

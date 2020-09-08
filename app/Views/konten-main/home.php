@@ -1,8 +1,95 @@
 <?= $this->extend('dekoraceh/main-page') ?>
+<?= $this->section('js') ?>
+<script>
+    $('.banner-carousel').owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        center: true,
+        autoWidth: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 5
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
 
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        center: true,
+        autoWidth: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 5
+            },
+            1000: {
+                items: 6
+            }
+        }
+    })
+</script>
+<?= $this->endSection('js') ?>
+<?= $this->section('css') ?>
+<style>
+    .category-img {
+        height: 15vh;
+        width: 15vh;
+    }
+
+
+
+    .category-img img {
+        /* width: 100%; */
+        object-fit: cover;
+    }
+
+    .category a {
+        color: #ea5b22;
+        font-size: 15px;
+    }
+
+    .category a:hover {
+        /* transition: .8s ease; */
+        font-weight: bold;
+    }
+
+    .bar-category:hover {
+        color: #ea5b22;
+    }
+
+    .recent-product {
+        display: flex;
+        width: 100vmin;
+    }
+
+    .recent-product .product-box {
+        height: 40vh;
+        width: 40vh;
+        padding: 5px;
+        margin: 10px;
+    }
+
+    .recent-product .product-box img {
+        object-fit: cover;
+        width: 100%;
+    }
+</style>
+
+<?= $this->endSection('css') ?>
 <?= $this->section('konten') ?>
 <!-- Hero Section Begin -->
-<section class="hero">
+<!-- <section class="hero">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
@@ -13,12 +100,12 @@
                     </div>
                     <ul>
                         <?php foreach ($category as $d) : ?>
-                            <li><a href="/kategori/<?= $d->slug ?>"><?= $d->category_name ?></a></li>
+                            <li><a class="bar-category" href="/kategori/<?= $d->slug ?>"><?= $d->category_name ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
@@ -30,42 +117,86 @@
                             <button type="submit" class="site-btn">SEARCH</button>
                         </form>
                     </div>
-                    <!-- <div class="hero__search__phone">
-                        <div class="hero__search__phone__icon">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="hero__item set-bg" data-setbg="<?= base_url() ?>/assets/img/bg2.jpg">
                     <div class="hero__text">
-                        <!-- <span>FRUIT FRESH</span> -->
                         <h2 style="color: white;">JASA<br />DEKOR</h2>
                         <p style="color: white">Cari jasa dekorasi untuk Hajatan, Pesta, Akikah, dan lainnya di sini</p>
-                        <!-- <a href="#" class="primary-btn">PESAN SEKARANG</a> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- Hero Section End -->
-<!-- Categories Section Begin -->
-<section class="categories">
+<div class="pt-5">
     <div class="container">
         <div class="row">
-            <div class="categories__slider owl-carousel">
-                <?php foreach ($category as $d) : ?>
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="<?= base_url() ?>/assets/cover/<?= $d->cover ?>">
-                            <h5><a href="#"><?= $d->category_name ?></a></h5>
+            <div class="col-md-12">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 200vh;">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="banner__pic">
+                                <img src="<?= base_url() ?>/assets/main/img/banner/banner-1.jpg" style="width: 100%;" alt="">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="banner__pic">
+                                <img src="<?= base_url() ?>/assets/main/img/banner/banner-2.jpg" style="width: 100%;" alt="">
+                            </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Begin -->
+<!-- <div class="banner featured">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="<?= base_url() ?>/assets/main/img/banner/banner-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="<?= base_url() ?>/assets/main/img/banner/banner-2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Banner End -->
+
+<!-- Categories Section Begin -->
+<section class="categories pt-5">
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <div class="section-title from-blog__title">
+                    <h2>Kategori</h2>
+                </div>
+            </div>
+        </div> -->
+        <div class="row col-md-12 col-sm-12 d-flex justify-content-center">
+            <?php foreach ($category as $d) : ?>
+                <div class="category text-center m-2">
+                    <div class="tumbnail category-img">
+                        <img src="<?= base_url() ?>/assets/cover/<?= $d->cover ?>" class="rounded float-left " alt="...">
+                    </div>
+                    <a href=""> <?= $d->category_name ?></a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -216,164 +347,88 @@
 </section> -->
 <!-- Featured Section End -->
 
-<!-- Banner Begin -->
-<div class="banner featured">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="<?= base_url() ?>/assets/main/img/banner/banner-1.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="<?= base_url() ?>/assets/main/img/banner/banner-2.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Banner End -->
-
 <!-- Latest Product Section Begin -->
-<section class="latest-product spad">
+<section class="banner featured">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Produk Terbaru</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+                <div class="section-title from-blog__title">
+                    <h2>Produk Terbaru</h2>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="latest-product__text">
-                    <h4>Paling Diminati</h4>
-                    <div class="latest-product__slider owl-carousel">
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
+            <div class="col-md-12 col-sm-12">
+                <div class="owl-carousel" style="width: 100%; ">
+                    <?php foreach ($lastest_product as $i => $d) : ?>
+                        <div class="">
+                            <div class="card" style="width: 20rem;">
+                                <div style="object-fit: cover; height: 200px">
+                                    <img class="card-img-top" style="height:200px; " src="<?= base_url() ?>/assets/product/<?= $d['product_image'] ?>" alt="">
                                 </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
+                                <div class="card-body" style="height: 200px;">
+                                    <h4 class="card-title" style="color: #ea5b22"><?= $d['product_name'] ?></h4>
+                                    <p class="card-text"><?= $d['product_desc'] ?></p>
                                 </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
+                                <div class="card-footer" style="height: 80px;">
+                                    <div class="float-left">
+                                        <?php if ($d['product_disc'] == 0) : ?>
+                                            <div style="font-size: 20px;">Rp. <?= number_format($d['product_price'], 0, ",", ".") ?> </div>
+                                        <?php else : ?>
+                                            <div style="text-decoration: line-through">Rp. <?= number_format($d['product_price'], 0, ",", ".") ?> </div>
+                                            <div style="font-size: 20px;">Rp. <?= number_format(($d['product_price'] - ($d['product_price'] * $d['product_disc'] / 100)), 0, ",", ".") ?> </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <a href="#" class="btn btn-primary float-right">Cek Produk Ini</a>
                                 </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
+                            </div>
                         </div>
-                        <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-1.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-2.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                            <a href="#" class="latest-product__item">
-                                <div class="latest-product__item__pic">
-                                    <img src="<?= base_url() ?>/assets/main/img/latest-product/lp-3.jpg" alt="">
-                                </div>
-                                <div class="latest-product__item__text">
-                                    <h6>Crab Pool Security</h6>
-                                    <span>$30.00</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 <!-- Latest Product Section End -->
+
+<section class="banner featured">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title from-blog__title">
+                    <h2>Produk Terlaris</h2>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="owl-carousel" style="width: 100%; ">
+                    <?php foreach ($lastest_product as $i => $d) : ?>
+                        <div class="">
+                            <div class="card" style="width: 20rem;">
+                                <div style="object-fit: cover; height: 200px">
+                                    <img class="card-img-top" style="height:200px; " src="<?= base_url() ?>/assets/product/<?= $d['product_image'] ?>" alt="">
+                                </div>
+                                <div class="card-body" style="height: 200px;">
+                                    <small class="float-right">127 <i class="fa fa-star"></i> </small>
+                                    <h4 class="card-title" style="color: #ea5b22"><?= $d['product_name'] ?></h4>
+                                    <p class="card-text"><?= $d['product_desc'] ?></p>
+                                </div>
+                                <div class="card-footer" style="height: 80px;">
+                                    <div class="float-left">
+                                        <?php if ($d['product_disc'] == 0) : ?>
+                                            <div style="font-size: 20px;">Rp. <?= number_format($d['product_price'], 0, ",", ".") ?> </div>
+                                        <?php else : ?>
+                                            <div style="text-decoration: line-through">Rp. <?= number_format($d['product_price'], 0, ",", ".") ?> </div>
+                                            <div style="font-size: 20px;">Rp. <?= number_format(($d['product_price'] - ($d['product_price'] * $d['product_disc'] / 100)), 0, ",", ".") ?> </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <a href="#" class="btn btn-primary float-right">Cek Produk Ini</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Blog Section Begin -->
 <section class="from-blog spad">

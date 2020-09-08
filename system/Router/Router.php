@@ -164,17 +164,14 @@ class Router implements RouterInterface
 
 		// If we cannot find a URI to match against, then
 		// everything runs off of it's default settings.
-		if ($uri === null || $uri === '')
-		{
+		if ($uri === null || $uri === '') {
 			return strpos($this->controller, '\\') === false
 				? $this->collection->getDefaultNamespace() . $this->controller
 				: $this->controller;
 		}
 
-		if ($this->checkRoutes($uri))
-		{
-			if ($this->collection->isFiltered($this->matchedRoute[0]))
-			{
+		if ($this->checkRoutes($uri)) {
+			if ($this->collection->isFiltered($this->matchedRoute[0])) {
 				$this->filterInfo = $this->collection->getFilterForRoute($this->matchedRoute[0]);
 			}
 
@@ -184,8 +181,7 @@ class Router implements RouterInterface
 		// Still here? Then we can try to match the URI against
 		// Controllers/directories, but the application may not
 		// want this, like in the case of API's.
-		if (! $this->collection->shouldAutoRoute())
-		{
+		if (!$this->collection->shouldAutoRoute()) {
 			throw new PageNotFoundException("Can't find a route for '{$uri}'.");
 		}
 
@@ -245,8 +241,7 @@ class Router implements RouterInterface
 	{
 		$route = $this->collection->get404Override();
 
-		if (is_string($route))
-		{
+		if (is_string($route)) {
 			$routeArray = explode('::', $route);
 
 			return [
@@ -255,8 +250,7 @@ class Router implements RouterInterface
 			];
 		}
 
-		if (is_callable($route))
-		{
+		if (is_callable($route)) {
 			return $route;
 		}
 
@@ -289,7 +283,7 @@ class Router implements RouterInterface
 	 */
 	public function directory(): string
 	{
-		return ! empty($this->directory) ? $this->directory : '';
+		return !empty($this->directory) ? $this->directory : '';
 	}
 
 	//--------------------------------------------------------------------
@@ -399,21 +393,18 @@ class Router implements RouterInterface
 			: ltrim($uri, '/ ');
 
 		// Don't waste any time
-		if (empty($routes))
-		{
+		if (empty($routes)) {
 			return false;
 		}
 
 		// Loop through the route array looking for wildcards
-		foreach ($routes as $key => $val)
-		{
+		foreach ($routes as $key => $val) {
 			$key = $key === '/'
 				? $key
 				: ltrim($key, '/ ');
 
 			// Are we dealing with a locale?
-			if (strpos($key, '{locale}') !== false)
-			{
+			if (strpos($key, '{locale}') !== false) {
 				$localeSegment = array_search('{locale}', preg_split('/[\/]*((^[a-zA-Z0-9])|\(([^()]*)\))*[\/]+/m', $key));
 
 				// Replace it with a regex so it
@@ -422,17 +413,14 @@ class Router implements RouterInterface
 			}
 
 			// Does the RegEx match?
-			if (preg_match('#^' . $key . '$#', $uri, $matches))
-			{
+			if (preg_match('#^' . $key . '$#', $uri, $matches)) {
 				// Is this route supposed to redirect to another?
-				if ($this->collection->isRedirect($key))
-				{
+				if ($this->collection->isRedirect($key)) {
 					throw new RedirectException(key($val), $this->collection->getRedirectCode($key));
 				}
 				// Store our locale so CodeIgniter object can
 				// assign it to the Request.
-				if (isset($localeSegment))
-				{
+				if (isset($localeSegment)) {
 					// The following may be inefficient, but doesn't upset NetBeans :-/
 					$temp                 = (explode('/', $uri));
 					$this->detectedLocale = $temp[$localeSegment];
@@ -442,8 +430,7 @@ class Router implements RouterInterface
 				// Are we using Closures? If so, then we need
 				// to collect the params into an array
 				// so it can be passed to the controller method later.
-				if (! is_string($val) && is_callable($val))
-				{
+				if (!is_string($val) && is_callable($val)) {
 					$this->controller = $val;
 
 					// Remove the original string from the matches array
@@ -464,22 +451,17 @@ class Router implements RouterInterface
 
 				// Support resource route when function with subdirectory
 				// ex: $routes->resource('Admin/Admins');
-				if (strpos($val, '$') !== false && strpos($key, '(') !== false && strpos($key, '/') !== false)
-				{
+				if (strpos($val, '$') !== false && strpos($key, '(') !== false && strpos($key, '/') !== false) {
 					$replacekey = str_replace('/(.*)', '', $key);
 					$val        = preg_replace('#^' . $key . '$#', $val, $uri);
 					$val        = str_replace($replacekey, str_replace('/', '\\', $replacekey), $val);
-				}
-				elseif (strpos($val, '$') !== false && strpos($key, '(') !== false)
-				{
+				} elseif (strpos($val, '$') !== false && strpos($key, '(') !== false) {
 					$val = preg_replace('#^' . $key . '$#', $val, $uri);
-				}
-				elseif (strpos($val, '/') !== false)
-				{
+				} elseif (strpos($val, '/') !== false) {
 					[
 						$controller,
 						$method,
-					] = explode( '::', $val );
+					] = explode('::', $val);
 
 					// Only replace slashes in the controller, not in the method.
 					$controller = str_replace('/', '\\', $controller);
@@ -519,49 +501,40 @@ class Router implements RouterInterface
 
 		// If we don't have any segments left - try the default controller;
 		// WARNING: Directories get shifted out of the segments array.
-		if (empty($segments))
-		{
+		if (empty($segments)) {
 			$this->setDefaultController();
 		}
 		// If not empty, then the first segment should be the controller
-		else
-		{
+		else {
 			$this->controller = ucfirst(array_shift($segments));
 		}
 
 		// Use the method name if it exists.
 		// If it doesn't, no biggie - the default method name
 		// has already been set.
-		if (! empty($segments))
-		{
+		if (!empty($segments)) {
 			$this->method = array_shift($segments);
 		}
 
-		if (! empty($segments))
-		{
+		if (!empty($segments)) {
 			$this->params = $segments;
 		}
 
-		if ($this->collection->getHTTPVerb() !== 'cli')
-		{
+		if ($this->collection->getHTTPVerb() !== 'cli') {
 			$controller  = '\\' . $this->collection->getDefaultNamespace();
 			$controller .= $this->directory ? str_replace('/', '\\', $this->directory) : '';
 			$controller .= $this->controllerName();
 			$controller  = strtolower($controller);
 			$methodName  = strtolower($this->methodName());
 
-			foreach ($this->collection->getRoutes('cli') as $route)
-			{
-				if (is_string($route))
-				{
+			foreach ($this->collection->getRoutes('cli') as $route) {
+				if (is_string($route)) {
 					$route = strtolower($route);
-					if (strpos($route, $controller . '::' . $methodName) === 0)
-					{
+					if (strpos($route, $controller . '::' . $methodName) === 0) {
 						throw new PageNotFoundException();
 					}
 
-					if ($route === $controller)
-					{
+					if ($route === $controller) {
 						throw new PageNotFoundException();
 					}
 				}
@@ -570,15 +543,13 @@ class Router implements RouterInterface
 
 		// Load the file so that it's available for CodeIgniter.
 		$file = APPPATH . 'Controllers/' . $this->directory . $this->controllerName() . '.php';
-		if (is_file($file))
-		{
+		if (is_file($file)) {
 			include_once $file;
 		}
 
 		// Ensure the controller stores the fully-qualified class name
 		// We have to check for a length over 1, since by default it will be '\'
-		if (strpos($this->controller, '\\') === false && strlen($this->collection->getDefaultNamespace()) > 1)
-		{
+		if (strpos($this->controller, '\\') === false && strlen($this->collection->getDefaultNamespace()) > 1) {
 			$this->controller = '\\' . ltrim(str_replace('/', '\\', $this->collection->getDefaultNamespace() . $this->directory . $this->controllerName()), '\\');
 		}
 	}
@@ -595,7 +566,7 @@ class Router implements RouterInterface
 	protected function validateRequest(array $segments): array
 	{
 		$segments = array_filter($segments, function ($segment) {
-			return ! empty($segment) || ($segment !== '0' || $segment !== 0);
+			return !empty($segment) || ($segment !== '0' || $segment !== 0);
 		});
 		$segments = array_values($segments);
 
@@ -604,12 +575,10 @@ class Router implements RouterInterface
 
 		// Loop through our segments and return as soon as a controller
 		// is found or when such a directory doesn't exist
-		while ($c-- > 0)
-		{
+		while ($c-- > 0) {
 			$test = $this->directory . ucfirst($this->translateURIDashes === true ? str_replace('-', '_', $segments[0]) : $segments[0]);
 
-			if (! is_file(APPPATH . 'Controllers/' . $test . '.php') && $directory_override === false && is_dir(APPPATH . 'Controllers/' . $this->directory . ucfirst($segments[0])))
-			{
+			if (!is_file(APPPATH . 'Controllers/' . $test . '.php') && $directory_override === false && is_dir(APPPATH . 'Controllers/' . $this->directory . ucfirst($segments[0]))) {
 				$this->setDirectory(array_shift($segments), true);
 				continue;
 			}
@@ -631,20 +600,16 @@ class Router implements RouterInterface
 	 */
 	public function setDirectory(string $dir = null, bool $append = false)
 	{
-		if (empty($dir))
-		{
+		if (empty($dir)) {
 			$this->directory = null;
 			return;
 		}
 
 		$dir = ucfirst($dir);
 
-		if ($append !== true || empty($this->directory))
-		{
+		if ($append !== true || empty($this->directory)) {
 			$this->directory = str_replace('.', '', trim($dir, '/')) . '/';
-		}
-		else
-		{
+		} else {
 			$this->directory .= str_replace('.', '', trim($dir, '/')) . '/';
 		}
 	}
@@ -662,8 +627,7 @@ class Router implements RouterInterface
 	protected function setRequest(array $segments = [])
 	{
 		// If we don't have any segments - try the default controller;
-		if (empty($segments))
-		{
+		if (empty($segments)) {
 			$this->setDefaultController();
 
 			return;
@@ -675,8 +639,7 @@ class Router implements RouterInterface
 
 		// $this->method already contains the default method name,
 		// so don't overwrite it with emptiness.
-		if (! empty($method))
-		{
+		if (!empty($method)) {
 			$this->method = $method;
 		}
 
@@ -692,19 +655,16 @@ class Router implements RouterInterface
 	 */
 	protected function setDefaultController()
 	{
-		if (empty($this->controller))
-		{
+		if (empty($this->controller)) {
 			throw RouterException::forMissingDefaultRoute();
 		}
 
 		// Is the method being specified?
-		if (sscanf($this->controller, '%[^/]/%s', $class, $this->method) !== 2)
-		{
+		if (sscanf($this->controller, '%[^/]/%s', $class, $this->method) !== 2) {
 			$this->method = 'index';
 		}
 
-		if (! is_file(APPPATH . 'Controllers/' . $this->directory . ucfirst($class) . '.php'))
-		{
+		if (!is_file(APPPATH . 'Controllers/' . $this->directory . ucfirst($class) . '.php')) {
 			return;
 		}
 

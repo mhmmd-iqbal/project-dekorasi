@@ -9,6 +9,7 @@
 
 <!-- Bootstrap core CSS -->
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap-reset.css" rel="stylesheet">
 <!--external css-->
 <link href="<?= base_url() ?>/assets/template/cms/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />

@@ -62,6 +62,9 @@ $routes->group('sys', ['filter' => 'admin_auth'], function ($routes) {
 	$routes->post('category', 'Admin\CategoryProductController::create');
 	$routes->post('category/all', 'Admin\CategoryProductController::get');
 
+	$routes->get('cat_blog', 'Admin\CategoryBlogController::index');
+	$routes->post('cat_blog', 'Admin\CategoryBlogController::create');
+
 
 	$routes->get('seller', 'Admin\SellerController::index');
 	$routes->post('seller/all', 'Admin\SellerController::get');
@@ -84,6 +87,7 @@ $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->get('product', 'User\ProductController::index');
 	$routes->post('product/all', 'User\ProductController::get');
 	$routes->get('product/new', 'User\ProductController::new');
+	$routes->post('product', 'User\ProductController::add');
 
 
 	$routes->add('faq', 'User\ControllerUser::faq');
@@ -92,7 +96,6 @@ $routes->group('user', ['filter' => 'user_auth'], function ($routes) {
 	$routes->add('paket', 'User\ControllerUser::paket');
 	$routes->add('paket/(:segment)', 'User\ControllerUser::detailPaket/$1');
 });
-
 /**
  * --------------------------------------------------------------------
  * Additional Routing

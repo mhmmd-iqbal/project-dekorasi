@@ -24,6 +24,8 @@
 
 <!-- Template Change Original One  -->
 <link href="<?= base_url() ?>/assets/template/main/mycss.css" rel="stylesheet">
+<link rel="stylesheet" href="<?= base_url() ?>/assets/owncarousel/assets/own.carousel.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>/assets/owncarousel/assets/owl.theme.default.min.css">
 <!-- =======================================================
   * Template Name: Moderna - v2.1.0
   * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
@@ -32,4 +34,5 @@
   ======================================================== -->
 
 <!-- Original CSS  -->
+
 <?= $this->renderSection('css') ?>

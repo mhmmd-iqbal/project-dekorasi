@@ -2,6 +2,7 @@
 <script src="<?= base_url() ?>/assets/template/cms/js/jquery.js"></script>
 <script src="<?= base_url() ?>/assets/template/cms/js/jquery-1.8.3.min.js"></script>
 <script src="<?= base_url() ?>/assets/template/cms/js/bootstrap.min.js"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 <script class="include" type="text/javascript" src="<?= base_url() ?>/assets/template/cms/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="<?= base_url() ?>/assets/template/cms/js/jquery.scrollTo.min.js"></script>
 <script src="<?= base_url() ?>/assets/template/cms/js/jquery.nicescroll.js" type="text/javascript"></script>
@@ -16,7 +17,7 @@
 
 <!-- SCRIPT FOR PLUGIN -->
 <script src="<?= base_url() ?>/assets/datatables/js/jquery.dataTables.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous"></script>
 
 <script>
     //owl carousel
@@ -62,6 +63,7 @@
             text: "Sedang diproses. Harap menunggu...",
             icon: baseUrl + "/assets/sweetalert/loader.gif",
             button: false,
+            closeOnClickOutside: false
         });
     }
 

@@ -102,7 +102,7 @@
             <div class="col-lg-3">
                 <div class="header__logo">
                     <a href="./index.html">
-                        <img style="max-height: 30px;" src="<?= base_url() ?>/assets/img/logo.png" alt="">
+                        <img style="max-height: 30px;" src="<?= base_url() ?>/logo/logo.png" alt="">
                     </a>
                 </div>
             </div>

@@ -53,10 +53,11 @@ class ProductController extends BaseController
             $no++;
             $row = array();
             $row[] = $no;
+            $row[] = $field->category_name;
             $row[] = $field->product_name;
-            $row[] = $field->product_price;
-            $row[] = $field->product_disc;
-            $row[] = '';
+            $row[] = "Rp. " . number_format($field->product_price, 0, ',', '.');
+            $row[] = number_format($field->product_disc, 0, ',', '.') . "%";
+            $row[] = "Rp. " . number_format($field->product_price - ($field->product_price * $field->product_disc / 100), 0, ',', '.');
             $row[] = '<a href="/sys/seller/' . $field->id . '" class="btn btn-info detail btn-sm" style="margin-right: 5px;"><i class="fa fa-search"></i> </a>' . '<button  style="margin-right: 5px;" class="btn btn-sm btn-danger" value="' . $field->id . '"><i class="fa fa-trash-o"></i> </button>';
             $data[] = $row;
         }
@@ -69,5 +70,41 @@ class ProductController extends BaseController
             "data" => $data,
         );
         return $this->respond($output, 200);
+    }
+
+    public function add()
+    {
+        $username = $this->session->username;
+        $product_name = $this->request->getVar('product_name', FILTER_SANITIZE_STRING);
+        $id_category = $this->request->getVar('id_category', FILTER_SANITIZE_STRING);
+        $product_quantity = $this->request->getVar('product_quantity', FILTER_SANITIZE_NUMBER_INT);
+        $product_price = $this->request->getVar('product_price', FILTER_SANITIZE_NUMBER_INT);
+        $product_disc = $this->request->getVar('product_disc', FILTER_SANITIZE_NUMBER_INT);
+        $product_desc = $this->request->getVar('product_desc', FILTER_SANITIZE_STRING);
+
+        $file = $this->request->getFile('product_image');
+        $newName = $file->getRandomName();
+        $file->move($this->base_file . '/product', $newName);
+
+        $data = [
+            'username'  => $username,
+            'id_category' => $id_category,
+            'product_name'  => $product_name,
+            'product_quantity' => $product_quantity,
+            'product_price' => $product_price,
+            'product_disc' => $product_disc,
+            'product_desc' => $product_desc,
+            'product_image' => $newName
+        ];
+        $product = new ModelProduct();
+        $simpan = $product->save($data);
+
+        if ($simpan == TRUE) {
+            $res = [
+                'text'  => 'Data Telah Diperbarui',
+                'status' => TRUE,
+            ];
+        }
+        return $this->respondCreated($res);
     }
 }

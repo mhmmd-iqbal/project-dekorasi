@@ -28,10 +28,7 @@ class ModelProduct extends Model
         $db    = \Config\Database::connect()->table($this->table);
         $column_order = array(null, 'username', null);
         $column_search = array('username');
-        $order = array('created_at' => 'desc');
-        $db->join('category_product', 'category_product.id = product.id_category');
-        $db->where('product.username', $username);
-        // $db->from($this->table);
+        $order = array('product.created_at' => 'desc');
 
         $i = 0;
         foreach ($column_search as $item) {
@@ -63,6 +60,10 @@ class ModelProduct extends Model
         if ($_POST['length'] != -1) {
             $db->limit($_POST['length'], $_POST['start']);
         }
+        $db->select('product.*');
+        $db->select('category_product.category_name');
+        $db->join('category_product', 'category_product.id = product.id_category');
+        $db->where('product.username', $username);
         $query = $db->get();
         return $query->getResultObject();
     }
@@ -71,6 +72,10 @@ class ModelProduct extends Model
     {
         $db    = \Config\Database::connect()->table($this->table);
         $this->_get_query($username);
+        $db->select('product.*');
+        $db->select('category_product.category_name');
+        $db->join('category_product', 'category_product.id = product.id_category');
+        $db->where('product.username', $username);
         return $db->countAllResults();
     }
 

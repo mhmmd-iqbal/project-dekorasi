@@ -19,6 +19,6 @@ class HomeController extends BaseController
             'username'  => $this->session->username,
             'active'    => 'dashboard'
         ];
-        return view('konten-admin/template', $data);
+        return view('konten-admin/dashboard', $data);
     }
 }

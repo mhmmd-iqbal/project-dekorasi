@@ -1,14 +1,14 @@
-<?= $this->extend('user/user-template') ?>
+<?= $this->extend('admin/admin-template') ?>
 <?= $this->section('konten') ?>
 <div class="row state-overview">
     <div class="col-md-12" style="padding-bottom: 10px;">
-        <a href="/user/product/new" class="btn btn-danger">Tambah Data Baru</a>
+        <button class="btn btn-danger" id="open-modal">Tambah Data Baru</button>
     </div>
 
-    <div class="col-md-12">
-        <div class="panel panel-info">
+    <div class="col-md-10">
+        <div class="panel">
             <div class="panel-heading">
-                <h4> Data Produk</h4>
+                <h4> Master Data Kategori Blog</h4>
             </div>
 
             <div class="panel-body">
@@ -17,70 +17,53 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Kategori Produk</th>
-                                <th>Nama Produk</th>
-                                <th>Harga Produk</th>
-                                <th>Diskon (%)</th>
-                                <th>Harga Setelah Diskon</th>
-                                <th>Aksi</th>
+                                <th>Category Name</th>
+                                <th>Created At</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody></tbody>
                     </table>
+                    <tbody></tbody>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <?= $this->endSection('konten') ?>
 
 <?= $this->section('modal') ?>
-<div class="modal fade" id="modal-id" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="modal-form">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Tambah Data Kategori Blog</h4>
             </div>
             <div class="modal-body">
-
+                <form action="/sys/category_blog" method="POST" id="submit-form" enctype="multipart/form-data">
+                    <?= csrf_field() ?>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input type="text" class="form-control" placeholder="New Category Name..." name="category_name">
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+            <div class="modal-footer" id="load-umum-show">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-submit-form">Simpan</button>
+            </div>
+            <div class="modal-footer" id="load-umum-hide" hidden>
+                <button type="button" class="btn btn-primary" disabled><i class="fa fa-refresh fa-spin"></i></button>
             </div>
         </div>
     </div>
 </div>
-
 <?= $this->endSection('modal') ?>
 
 <?= $this->section('js') ?>
 <script>
-    showData()
-
-    function showData() {
-        let table = $("#data-table").DataTable({
-            orderable: false,
-            destroy: true,
-            responsive: false,
-            processing: true,
-            serverSide: true,
-            stateSave: true,
-            order: [],
-
-            ajax: {
-                url: "/user/product/all",
-                type: "POST",
-            },
-
-            columnDefs: [{
-                targets: [0],
-                orderable: false,
-            }, ],
-        });
-    }
+    $(".master").removeClass("active");
+    $("#kategori_blog").addClass("active");
 
     $("#open-modal").click(function(e) {
         e.preventDefault();
@@ -90,7 +73,6 @@
     $('#btn-submit-form').click(() => {
         $('#submit-form').trigger("submit");
     });
-
     $('#submit-form').submit(function(e) {
         e.preventDefault()
         var post_url = $(this).attr("action"); //get form action url
@@ -104,16 +86,17 @@
             contentType: false,
             processData: false,
             beforeSend: () => {
-                // loading()
+                loading()
                 $('#load_umum_show').attr('hidden', false)
                 $('#load_umum_hide').attr('hidden', true)
             },
             success: (res) => {
-                // swal.close()
+                swal.close()
                 $('#load_umum_show').attr('hidden', true)
                 $('#load_umum_hide').attr('hidden', false)
                 if (res.status === true) {
                     toaster("Berhasil", "Data Telah Disimpan", "success")
+                    $('#cover-image').prop('src', '#')
                     $(this).trigger("reset");
                     $("#modal-form").modal("toggle");
                     showData()
