@@ -40,28 +40,49 @@
 </script>
 
 <!-- Another Js From Outside Web -->
-<script src="<?= base_url() ?>/assets/sweetalert/sweetalert.min.js"></script>
+<!-- <script src="<?= base_url() ?>/assets/sweetalert/sweetalert.min.js"></script> -->
+<script src="<?= base_url() ?>/sweetalert/sweetalert2.all.min.js"></script>
 <script src="<?= base_url() ?>/assets/toaster/jquery.toast.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
     const baseUrl = '<?= base_url() ?>'
 
-    function notif(title, text, icon) {
-        swal({
-            title: title,
+    // function notif(title, text, icon) {
+    //     swal({
+    //         title: title,
+    //         text: text,
+    //         icon: icon,
+    //         buttons: false,
+    //         timer: 1500,
+    //     });
+    // }
+
+    // function loading() {
+    //     swal({
+    //         title: "Memeriksa...",
+    //         text: "Sedang diproses. Harap menunggu...",
+    //         icon: baseUrl + "/assets/sweetalert/loader.gif",
+    //         button: false,
+    //     });
+    // }
+    function notif(tittle, text, icon) {
+        swal.fire({
+            title: tittle,
             text: text,
             icon: icon,
-            buttons: false,
-            timer: 1500,
+            showConfirmButton: false,
+            timer: 1500
         });
     }
 
     function loading() {
-        swal({
-            title: "Memeriksa...",
-            text: "Sedang diproses. Harap menunggu...",
-            icon: baseUrl + "/assets/sweetalert/loader.gif",
-            button: false,
+        swal.fire({
+            title: "<i class='fa fa-spinner fa-spin fa-2x text-danger'><i>",
+            text: "Sedang diproses...",
+            icon: false,
+            showConfirmButton: false,
+            showCancelButton: false,
+            allowOutsideClick: false
         });
     }
 

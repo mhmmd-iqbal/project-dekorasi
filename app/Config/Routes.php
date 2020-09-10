@@ -44,57 +44,62 @@ $routes->group('/', function ($routes) {
 	$routes->post('register', 'RegisterController::index');
 });
 
-$routes->group('sys', ['filter' => 'admin_auth'], function ($routes) {
-	$routes->add('', 'Admin\HomeController::index');
+$routes->group('sys', ['filter' => 'admin_auth', 'namespace' => 'App\Controllers\Admin'], function ($routes) {
+	$routes->add('', 'HomeController::index');
 
-	$routes->get('admin', 'Admin\AdminController::index');
-	$routes->post('admin', 'Admin\AdminController::create');
-	$routes->post('admin/all', 'Admin\AdminController::get');
-	$routes->post('admin/activate', 'Admin\AdminController::aktif');
-	$routes->post('admin/deactivate', 'Admin\AdminController::non_aktif');
+	$routes->get('admin', 'AdminController::index');
+	$routes->post('admin', 'AdminController::create');
+	$routes->post('admin/all', 'AdminController::get');
+	$routes->post('admin/activate', 'AdminController::aktif');
+	$routes->post('admin/deactivate', 'AdminController::non_aktif');
 
-	$routes->add('user', 'Admin\UserController::index');
-	$routes->post('user/all', 'Admin\UserController::get');
-	$routes->post('user/activate', 'Admin\UserController::aktif');
-	$routes->post('user/deactivate', 'Admin\UserController::non_aktif');
+	$routes->add('user', 'UserController::index');
+	$routes->post('user/all', 'UserController::get');
+	$routes->post('user/activate', 'UserController::aktif');
+	$routes->post('user/deactivate', 'UserController::non_aktif');
 
-	$routes->add('category', 'Admin\CategoryProductController::index');
-	$routes->post('category', 'Admin\CategoryProductController::create');
-	$routes->post('category/all', 'Admin\CategoryProductController::get');
+	$routes->add('category', 'CategoryProductController::index');
+	$routes->post('category', 'CategoryProductController::create');
+	$routes->post('category/all', 'CategoryProductController::get');
 
-	$routes->get('cat_blog', 'Admin\CategoryBlogController::index');
-	$routes->post('cat_blog', 'Admin\CategoryBlogController::create');
+	$routes->get('cat_blog', 'CategoryBlogController::index');
+	$routes->post('cat_blog', 'CategoryBlogController::create');
 
 
-	$routes->get('seller', 'Admin\SellerController::index');
-	$routes->post('seller/all', 'Admin\SellerController::get');
-	$routes->get('seller/new', 'Admin\SellerController::new');
-	$routes->get('seller/(:segment)', 'Admin\SellerController::show/$1');
-	$routes->get('seller/(:segment)/edit', 'Admin\SellerController::edit/$1');
-	$routes->put('seller/(:segment)', 'Admin\SellerController::update/$1');
-	$routes->patch('seller/(:segment)', 'Admin\SellerController::update/$1');
-	$routes->delete('seller/(:segment)', 'Admin\SellerController::delete/$1');
-	$routes->post('seller/verification', 'Admin\SellerController::verification');
+	$routes->get('seller', 'SellerController::index');
+	$routes->post('seller/all', 'SellerController::get');
+	$routes->get('seller/new', 'SellerController::new');
+	$routes->get('seller/(:segment)', 'SellerController::show/$1');
+	$routes->get('seller/(:segment)/edit', 'SellerController::edit/$1');
+	$routes->put('seller/(:segment)', 'SellerController::update/$1');
+	$routes->patch('seller/(:segment)', 'SellerController::update/$1');
+	$routes->delete('seller/(:segment)', 'SellerController::delete/$1');
+	$routes->post('seller/verification', 'SellerController::verification');
+
+	$routes->get('banner', 'BannerController::index');
+	$routes->post('banner', 'BannerController::create');
+	$routes->post('banner/all', 'BannerController::get');
+	$routes->put('banner/publish/(:segment)', 'BannerController::publish/$1');
 });
 
-$routes->group('user', ['filter' => 'user_auth'], function ($routes) {
+$routes->group('user', ['filter' => 'user_auth', 'namespace' => 'App\Controllers\User'], function ($routes) {
 	$routes->add('', 'User\HomeController::index');
 
-	$routes->get('profile', 'User\ProfileController::index');
-	$routes->get('profile/get', 'User\ProfileController::get');
-	$routes->post('profile', 'User\ProfileController::update');
+	$routes->get('profile', 'ProfileController::index');
+	$routes->get('profile/get', 'ProfileController::get');
+	$routes->post('profile', 'ProfileController::update');
 
-	$routes->get('product', 'User\ProductController::index');
-	$routes->post('product/all', 'User\ProductController::get');
-	$routes->get('product/new', 'User\ProductController::new');
-	$routes->post('product', 'User\ProductController::add');
+	$routes->get('product', 'ProductController::index');
+	$routes->post('product/all', 'ProductController::get');
+	$routes->get('product/new', 'ProductController::new');
+	$routes->post('product', 'ProductController::add');
 
 
-	$routes->add('faq', 'User\ControllerUser::faq');
-	$routes->add('review', 'User\ControllerUser::review');
-	$routes->add('account', 'User\ControllerUser::account');
-	$routes->add('paket', 'User\ControllerUser::paket');
-	$routes->add('paket/(:segment)', 'User\ControllerUser::detailPaket/$1');
+	$routes->add('faq', 'ControllerUser::faq');
+	$routes->add('review', 'ControllerUser::review');
+	$routes->add('account', 'ControllerUser::account');
+	$routes->add('paket', 'ControllerUser::paket');
+	$routes->add('paket/(:segment)', 'ControllerUser::detailPaket/$1');
 });
 /**
  * --------------------------------------------------------------------

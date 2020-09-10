@@ -133,18 +133,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 200vh;">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 250vh;">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="banner__pic">
-                                <img src="<?= base_url() ?>/assets/main/img/banner/banner-1.jpg" style="width: 100%;" alt="">
+                        <?php foreach($banner as $i => $d): ?>
+                        <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
+                            <div class="banner__pic" style="height: 50vmin; overflow: hidden;">
+                                <img src="<?= base_url() ?>/assets/cover/<?= $d->banner_image?>" style="width: 100%; height: 100%; object-position: center;  object-fit: cover" alt="">
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="banner__pic">
-                                <img src="<?= base_url() ?>/assets/main/img/banner/banner-2.jpg" style="width: 100%;" alt="">
-                            </div>
-                        </div>
+                        </div>    
+                        <?php endforeach;  ?>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

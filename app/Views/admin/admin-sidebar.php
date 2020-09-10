@@ -27,6 +27,20 @@
                  </ul>
              </li>
 
+
+             <li>
+                 <a class="<?= $active == 'banner' ? 'active' : '' ?>" href="/sys/banner">
+                     <i class="fa fa-exclamation-triangle"></i>
+                     <span>Banner</span>
+                 </a>
+             </li>
+
+             <li>
+                 <a class="" href="index.html">
+                     <i class="fa fa-pencil-square-o"></i>
+                     <span>Blog</span>
+                 </a>
+             </li>
              <!-- <li>
                  <a class="" href="index.html">
                      <i class="fa fa-th"></i>
