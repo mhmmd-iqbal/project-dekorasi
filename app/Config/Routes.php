@@ -63,7 +63,15 @@ $routes->group('sys', ['filter' => 'admin_auth', 'namespace' => 'App\Controllers
 	$routes->post('category/all', 'CategoryProductController::get');
 
 	$routes->get('cat_blog', 'CategoryBlogController::index');
+	$routes->post('cat_blog/all', 'CategoryBlogController::get');
 	$routes->post('cat_blog', 'CategoryBlogController::create');
+
+	$routes->get('blog', 'BlogController::index');
+	$routes->post('blog/all', 'BlogController::get');
+	$routes->post('blog', 'BlogController::create');
+	$routes->get('blog/new', 'BlogController::new');
+
+	$routes->get('profile', 'AppProfileController::index');
 
 
 	$routes->get('seller', 'SellerController::index');

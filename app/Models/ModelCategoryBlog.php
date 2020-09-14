@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use CodeIgniter\Model;
 
@@ -11,6 +11,7 @@ class ModelCategoryBlog extends Model
     protected $useTimestamps = true;
     protected $allowedFields = [
         'category_name',
+        'slug',
         'created_at',
         'updated_at',
         'deleted_at',

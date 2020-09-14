@@ -2,7 +2,7 @@
 
 <?= $this->section('css') ?>
 <style>
-    .btn.btn-sm{
+    .btn.btn-sm {
         margin: 0 .5vmin
     }
 </style>
@@ -169,22 +169,23 @@
 
     showData()
 
-    $('#data-table').on('click', '.publish', function(){
+    $('#data-table').on('click', '.publish', function() {
         let id = $(this).data('id')
         $.ajax({
-            url: '/sys/banner/publish/'+id,
+            url: '/sys/banner/publish/' + id,
             type: 'PUT',
             dataType: 'JSON',
             beforeSend: () => {
                 loading()
             },
             success: (res) => {
-                if(res.status === true){
+                if (res.status === true) {
                     showData()
                     return notif("Berhasil", "Banner telah dipublish", "success")
                 }
                 return notif("Gagal", "Terjadi kesalahan", "error")
-            }, error: (xhr, status, error) => {
+            },
+            error: (xhr, status, error) => {
                 console.log(xhr.responseText)
                 swal.fire({
                     title: "Error : " + xhr.status,

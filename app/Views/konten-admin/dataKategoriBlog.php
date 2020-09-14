@@ -18,6 +18,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Category Name</th>
+                                <th>Slug Name</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
@@ -32,14 +33,14 @@
 <?= $this->endSection('konten') ?>
 
 <?= $this->section('modal') ?>
-<div class="modal fade" id="modal-form">
-    <div class="modal-dialog">
+<div class="modal fade" id="modal-form" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Tambah Data Kategori Blog</h4>
             </div>
             <div class="modal-body">
-                <form action="/sys/category_blog" method="POST" id="submit-form" enctype="multipart/form-data">
+                <form action="/sys/cat_blog" method="POST" id="submit-form" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-12 form-group">
@@ -62,7 +63,7 @@
 
 <?= $this->section('js') ?>
 <script>
-    $(".master").removeClass("active");
+    $(".sub__blog").removeClass("active");
     $("#kategori_blog").addClass("active");
 
     $("#open-modal").click(function(e) {
@@ -103,8 +104,42 @@
                 } else {
                     toaster("Gagal", "Data Gagal Disimpan", "error")
                 }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText)
+                swal.fire({
+                    title: "Error : " + xhr.status,
+                    text: xhr.statusText,
+                    icon: "error",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         })
     });
+
+    function showData() {
+        let table = $("#data-table").DataTable({
+            orderable: false,
+            destroy: true,
+            responsive: false,
+            processing: true,
+            serverSide: true,
+            stateSave: true,
+            order: [],
+
+            ajax: {
+                url: "/sys/cat_blog/all",
+                type: "POST",
+            },
+
+            columnDefs: [{
+                targets: [0],
+                orderable: false,
+            }, ],
+        });
+    }
+
+    showData()
 </script>
 <?= $this->endSection('js') ?>

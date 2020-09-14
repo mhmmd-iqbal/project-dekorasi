@@ -134,7 +134,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-height: 250vh;">
-                    <div class="carousel-inner">
+                    <div class="carousel-innPoer">
                         <?php foreach($banner as $i => $d): ?>
                         <div class="carousel-item <?= $i == 0 ? 'active' : '' ?>">
                             <div class="banner__pic" style="height: 50vmin; overflow: hidden;">

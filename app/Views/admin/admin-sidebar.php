@@ -5,8 +5,15 @@
          <ul class="sidebar-menu" id="nav-accordion">
              <li>
                  <a class="<?= $active == 'dashboard' ? 'active' : '' ?>" href="/sys">
-                     <i class="fa fa-dashboard"></i>
+                     <i class="fa fa-home"></i>
                      <span>Dashboard</span>
+                 </a>
+             </li>
+
+             <li>
+                 <a class="<?= $active == 'profile' ? 'active' : '' ?>" href="/sys/profile">
+                     <i class="fa fa-building"></i>
+                     <span>App Profile</span>
                  </a>
              </li>
 
@@ -23,7 +30,6 @@
                      <li class="master" id="seller"><a href="/sys/seller">Data Seller</a></li>
                      <li class="master" id="customer"><a href="/sys/customer">Data Customer</a></li>
                      <li class="master" id="kategori"><a href="/sys/category">Data Kategori Produk</a></li>
-                     <li class="master" id="kategori_blog"><a href="/sys/cat_blog">Data Kategori Blog</a></li>
                  </ul>
              </li>
 
@@ -35,11 +41,15 @@
                  </a>
              </li>
 
-             <li>
-                 <a class="" href="index.html">
-                     <i class="fa fa-pencil-square-o"></i>
-                     <span>Blog</span>
+             <li class="sub-menu">
+                 <a href="javascript:;" class="<?= $active == 'blog' ? 'active' : '' ?>">
+                     <i class="fa fa-outdent"></i>
+                     <span>Blog Konten</span>
                  </a>
+                 <ul class="sub">
+                     <li class="sub_blog" id="konten_blog"><a href="/sys/blog">Konten</a></li>
+                     <li class="sub_blog" id="kategori_blog"><a href="/sys/cat_blog">Kategori</a></li>
+                 </ul>
              </li>
              <!-- <li>
                  <a class="" href="index.html">
@@ -74,7 +84,7 @@
              </li> -->
              <li>
                  <a href="">
-                     <i class="fa fa-user"></i>
+                     <i class="fa fa-user-circle"></i>
                      <span>My Account</span>
                  </a>
              </li>

@@ -4,32 +4,35 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateTableBlog extends Migration
+class CreateTableAppProfile extends Migration
 {
 	public function up()
 	{
 		//
 		$this->forge->addField([
-			'id'	=> [
-				'type'	=> 'INT',
+			'id' => [
+				'type' => 'INT',
 				'constraint' => 5,
 				'unsigned' => TRUE,
-				'auto_increment'	=> TRUE
+				'auto_increment' => TRUE,
 			],
-			'id_catgeory'	=> [
-				'type'	=> 'INT',
-				'constraint' => 5,
+			'address' => [
+				'type' => 'text',
+				'null' => TRUE
 			],
-			'blog_title'	=> [
-				'type'	=> 'VARCHAR',
+			'email' => [
+				'type' => 'TEXT',
+				'null' => TRUE
+			],
+			'phone'	=> [
+				'type' => 'VARCHAR',
+				'constraint' => 15,
+				'null' => TRUE
+			],
+			'logo' => [
+				'type' => 'VARCHAR',
 				'constraint' => 255,
-			],
-			'blog_content'	=> [
-				'type'	=> 'BLOB',
-			],
-			'blog_image'	=> [
-				'type'	=> 'VARCHAR',
-				'constraint' => 255
+				'null' => TRUE
 			],
 			'created_at'  => [
 				'type'	=> 'DATETIME',
@@ -43,8 +46,7 @@ class CreateTableBlog extends Migration
 			],
 		]);
 		$this->forge->addKey('id', TRUE);
-		// $this->forge->addForeignKey('id_category', 'category_blog', 'id');
-		$this->forge->createTable('blog');
+		$this->forge->createTable('app_profile');
 	}
 
 	//--------------------------------------------------------------------
@@ -52,6 +54,6 @@ class CreateTableBlog extends Migration
 	public function down()
 	{
 		//
-		$this->forge->dropTable('blog');
+		$this->forge->dropTable('app_profile');
 	}
 }

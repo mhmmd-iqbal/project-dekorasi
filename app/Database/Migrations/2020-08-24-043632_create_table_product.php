@@ -61,6 +61,8 @@ class CreateTableProduct extends Migration
 		]);
 
 		$this->forge->addKey('id', TRUE);
+		// $this->forge->addForeignKey('id_category', 'category_product', 'id');
+		$this->forge->addForeignKey('username', 'user', 'username', 'NO ACTION', 'NO ACTION');
 		$this->forge->createTable('product');
 	}
 

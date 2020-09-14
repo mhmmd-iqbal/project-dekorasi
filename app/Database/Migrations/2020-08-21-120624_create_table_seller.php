@@ -80,6 +80,7 @@ class CreateTableSeller extends Migration
 			],
 		]);
 		$this->forge->addKey('id', TRUE);
+		$this->forge->addForeignKey('username', 'user', 'username', 'NO ACTION', 'NO ACTION');
 		$this->forge->createTable('seller');
 	}
 

@@ -1,7 +1,8 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Ogani Template">
-    <meta name="keywords" content="Ogani, unica, creative, html">
+    <link rel="icon" href="<?= base_url() ?>/logo/logo.png" />
+    <meta name="description" content="menyediakan jasa dekorasi dan catering untuk acara besar dan kecil ">
+    <meta name="keywords" content="dekorasi, jasa, catering, acara">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $tittle ?></title>

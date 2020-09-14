@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.html"><img style="max-height: 40px;" src="<?= base_url() ?>/logo/logo.png" alt=""></a>
+                        <a href="./index.html"><img style="max-height: 40px;" src="<?= base_url() ?>/logo/logo.png" alt="logo aplikasi"></a>
                     </div>
                     <ul>
                         <li>Address: Company Address Here</li>

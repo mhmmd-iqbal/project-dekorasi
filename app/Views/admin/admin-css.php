@@ -3,7 +3,7 @@
 <meta name="description" content="">
 <meta name="author" content="Mosaddek">
 <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-<link rel="shortcut icon" href="img/favicon.png">
+<link rel="shortcut icon" href="<?= base_url() ?>/logo/logo.png">
 
 <title><?= $judul ?></title>
 
@@ -14,7 +14,8 @@
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url() ?>/assets/template/cms/css/bootstrap-reset.css" rel="stylesheet">
 <!--external css-->
-<link href="<?= base_url() ?>/assets/template/cms/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- <link href="<?= base_url() ?>/assets/template/cms/assets/font-awesome/css/font-awesome.css" rel="stylesheet" /> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 <link href="<?= base_url() ?>/assets/template/cms/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?= base_url() ?>/assets/template/cms/css/owl.carousel.css" type="text/css">
 <!-- Custom styles for this template -->
